@@ -1,0 +1,56 @@
+[root@openshift-centos7-1 tensorflow-build-s2i]# oc new-app --template=tensorflow-build-job  --param=APPLICATION_NAME=tf-centos7-build-job-${PYTHON_VERSION//.}-13 --param=BUILDER_IMAGESTREAM=tf-centos7-build-image-${PYTHON_VERSION//.}-13:1  --param=PYTHON_VERSION=$PYTHON_VERSION   --param=CUSTOM_BUILD="bazel build --copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-mfpmath=both --copt=-msse4.2  --cxxopt='-D_GLIBCXX_USE_CXX11_ABI=0' --local_resources 2048,2.0,1.0 --verbose_failures //tensorflow/tools/pip_package:build_pip_package"  --param=GIT_RELEASE_REPO=$GIT_RELEASE_REPO --param=GIT_TOKEN=$GIT_TOKEN --param=BAZEL_VERSION=0.20.0 --param=TF_GIT_BRANCH=r1.13
+--> Deploying template "default/tensorflow-build-job" to project default
+
+     tensorflow-build-job
+     ---------
+     Template to create a Job to build tensorflow wheel files.
+
+     * With parameters:
+        * APPLICATION_NAME=tf-centos7-build-job-36-13
+        * BUILDER_IMAGESTREAM=tf-centos7-build-image-36-13:1
+        * CUSTOM_BUILD=bazel build --copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-mfpmath=both --copt=-msse4.2  --cxxopt='-D_GLIBCXX_USE_CXX11_ABI=0' --local_resources 2048,2.0,1.0 --verbose_failures //tensorflow/tools/pip_package:build_pip_package
+        * BUILD_OPTS=
+        * TF_CUDA_VERSION=9.2
+        * TF_CUDA_COMPUTE_CAPABILITIES=3.0,3.5,5.2,6.0,6.1,7.0
+        * TF_CUDNN_VERSION=7
+        * CUDA_TOOLKIT_PATH=/usr/local/cuda
+        * CUDNN_INSTALL_PATH=/usr/local/cuda
+        * GCC_HOST_COMPILER_PATH=/usr/bin/gcc
+        * TF_NEED_OPENCL_SYCL=0
+        * TF_CUDA_CLANG=0
+        * TF_NEED_JEMALLOC=1
+        * TF_NEED_GCP=0
+        * TF_NEED_VERBS=0
+        * TF_NEED_HDFS=0
+        * TF_ENABLE_XLA=0
+        * TF_NEED_OPENCL=0
+        * TF_NEED_CUDA=0
+        * TF_NEED_MPI=0
+        * TF_NEED_GDR=0
+        * TF_NEED_S3=0
+        * TF_NEED_AWS=0
+        * TF_NEED_KAFKA=0
+        * TF_NEED_OPENCL_SYCL=0
+        * TF_DOWNLOAD_CLANG=0
+        * TF_SET_ANDROID_WORKSPACE=0
+        * TF_NEED_TENSORRT=0
+        * TF_NEED_IGNITE=0
+        * TF_NEED_ROCM=0
+        * NCCL_INSTALL_PATH=/usr/local/nccl-2.2
+        * TEST_WHEEL_FILE=y
+        * PYTHON_VERSION=3.6
+        * BAZEL_VERSION=0.20.0
+        * TF_GIT_BRANCH=r1.13
+        * HOST_ON_HTTP_SERVER=n
+        * PORT=8080
+        * TEST_WHEEL_FILE=y
+        * GIT_TOKEN=bd9a87436a5a68658de3b1bbe10df601ebc39b72
+        * GIT_RELEASE_REPO=https://github.com/hyeydummy1/oc-tf-builder-starter
+        * TEST_LOOP=n
+        * CUSTOM_TEST=bazel test -c opt --local_resources 2048,.5,1.0 -- //tensorflow/... -//tensorflow/compiler/... -//tensorflow/contrib/lite/... 
+        * TF_ENABLE_TEST=0
+
+--> Creating resources ...
+    job.batch "tf-centos7-build-job-36-13" created
+--> Success
+    Run 'oc status' to view your app.
