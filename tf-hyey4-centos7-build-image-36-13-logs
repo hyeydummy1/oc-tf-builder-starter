@@ -1,0 +1,1821 @@
+[root@openshift-centos7-1 ~]# oc logs -f bc/tf-hyey4-centos7-build-image-36-13
+Cloning "https://github.com/thoth-station/tensorflow-build-s2i.git" ...
+	Commit:	2cbf1e5f55944067aa327112387df6fe55d28184 (fix CPP build issue)
+	Author:	Subin M <subin@redhat.com>
+	Date:	Tue Mar 5 12:08:51 2019 -0500
+Replaced Dockerfile FROM image openshift/base-centos7
+Step 1/54 : FROM openshift/base-centos7
+ ---> 4842f0bd3d61
+Step 2/54 : ENV "PYTHON_VERSION" "3.6" "BAZEL_VERSION" "0.20.0"
+ ---> Running in cd7a312fa637
+ ---> 8f2ae918fcdb
+Removing intermediate container cd7a312fa637
+Step 3/54 : MAINTAINER Subin Modeel <smodeel@redhat.com>
+ ---> Running in 02296f7f657e
+ ---> 6ad0f34cc5d1
+Removing intermediate container 02296f7f657e
+Step 4/54 : USER root
+ ---> Running in fd541c033ba7
+ ---> 61c0a4ce9341
+Removing intermediate container fd541c033ba7
+Step 5/54 : ENV BUILDER_VERSION 1.0
+ ---> Running in 1f97286b8889
+ ---> c9c94571baac
+Removing intermediate container 1f97286b8889
+Step 6/54 : LABEL io.k8s.description "S2I builder for Tensorflow binaries." io.k8s.display-name "Tensorflow BUILD" io.openshift.expose-services "8080:http" io.openshift.tags "builder,python,tf-build" io.openshift.s2i.scripts-url "image:///usr/libexec/s2i"
+ ---> Running in 4c49bf9e71cf
+ ---> 1243a7aa022e
+Removing intermediate container 4c49bf9e71cf
+Step 7/54 : ARG BAZEL_VERSION=0.20.0
+ ---> Running in 9eb6936cf50b
+ ---> 8a9265ced8ea
+Removing intermediate container 9eb6936cf50b
+Step 8/54 : ARG PYTHON_VERSION=3.6
+ ---> Running in 473a406a089f
+ ---> 3ed865de9b09
+Removing intermediate container 473a406a089f
+Step 9/54 : ENV BAZEL_VERSION $BAZEL_VERSION
+ ---> Running in 1264533c23c3
+ ---> 2736068150dd
+Removing intermediate container 1264533c23c3
+Step 10/54 : ENV PYTHON_VERSION $PYTHON_VERSION
+ ---> Running in f74e38cff564
+ ---> f5e54a8aba01
+Removing intermediate container f74e38cff564
+Step 11/54 : ENV LANGUAGE en_US.UTF-8
+ ---> Running in 14d6047bb1ab
+ ---> c325a13f8f32
+Removing intermediate container 14d6047bb1ab
+Step 12/54 : ENV LANG en_US.UTF-8
+ ---> Running in d52b40d42e59
+ ---> daf256fb109e
+Removing intermediate container d52b40d42e59
+Step 13/54 : ENV LC_ALL ""
+ ---> Running in db2820015164
+ ---> c5769b40dfcc
+Removing intermediate container db2820015164
+Step 14/54 : ENV PYTHONIOENCODING UTF-8
+ ---> Running in 53730d8b9b6e
+ ---> 93f3f37dbda0
+Removing intermediate container 53730d8b9b6e
+Step 15/54 : ENV NB_USER default
+ ---> Running in 2d05bfaf2a8b
+ ---> b35511fd6f4f
+Removing intermediate container 2d05bfaf2a8b
+Step 16/54 : ENV NB_UID 1001
+ ---> Running in 5e196a538bd0
+ ---> bde587ef7be7
+Removing intermediate container 5e196a538bd0
+Step 17/54 : ENV PYTHON_BIN_PATH /usr/bin/python
+ ---> Running in 2a6ab7238652
+ ---> 7c49adf452a9
+Removing intermediate container 2a6ab7238652
+Step 18/54 : ENV TINI_VERSION v0.18.0
+ ---> Running in fa4dc3facfa0
+ ---> fff653722520
+Removing intermediate container fa4dc3facfa0
+Step 19/54 : ENV PYTHON_LIB_PATH /usr/lib64/python$PYTHON_VERSION/site-packages
+ ---> Running in a87d69b81638
+ ---> 26f25e6d32d8
+Removing intermediate container a87d69b81638
+Step 20/54 : ENV LD_LIBRARY_PATH "/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}";
+ ---> Running in 495fa6f924f9
+ ---> e910866d03f9
+Removing intermediate container 495fa6f924f9
+Step 21/54 : ENV BAZELRC /root/.bazelrc
+ ---> Running in 8dc6b04ec46f
+ ---> 4f3b71ae9240
+Removing intermediate container 8dc6b04ec46f
+Step 22/54 : ENV PYTHON_BIN_PATH /usr/bin/python
+ ---> Running in 588e6ce1c448
+ ---> e0096ed78194
+Removing intermediate container 588e6ce1c448
+Step 23/54 : ENV CC_OPT_FLAGS -march=native
+ ---> Running in 4a44d4273eb8
+ ---> 67a1dbf6493f
+Removing intermediate container 4a44d4273eb8
+Step 24/54 : ENV TF_NEED_JEMALLOC 1
+ ---> Running in 8eeeee027f0f
+ ---> a8a47d4f3ecb
+Removing intermediate container 8eeeee027f0f
+Step 25/54 : ENV TF_NEED_GCP 0
+ ---> Running in ca52c1db3af7
+ ---> d82ccd17d34e
+Removing intermediate container ca52c1db3af7
+Step 26/54 : ENV TF_NEED_VERBS 0
+ ---> Running in 1d27b0eca0d5
+ ---> 0a745af3ac29
+Removing intermediate container 1d27b0eca0d5
+Step 27/54 : ENV TF_NEED_HDFS 0
+ ---> Running in cc93f57b7bee
+ ---> eafcbe0222ab
+Removing intermediate container cc93f57b7bee
+Step 28/54 : ENV TF_ENABLE_XLA 0
+ ---> Running in 99aad488c91e
+ ---> 1025a18bb71c
+Removing intermediate container 99aad488c91e
+Step 29/54 : ENV TF_NEED_OPENCL 0
+ ---> Running in b3b67ff6794c
+ ---> 79ad666bf824
+Removing intermediate container b3b67ff6794c
+Step 30/54 : ENV TF_NEED_CUDA 0
+ ---> Running in 315365b82685
+ ---> a8388e3244da
+Removing intermediate container 315365b82685
+Step 31/54 : ENV TF_NEED_MPI 0
+ ---> Running in 380a10230b41
+ ---> 19142535428b
+Removing intermediate container 380a10230b41
+Step 32/54 : ENV TF_NEED_GDR 0
+ ---> Running in bb3df99d8ef5
+ ---> f4f8a133edae
+Removing intermediate container bb3df99d8ef5
+Step 33/54 : ENV TF_NEED_S3 0
+ ---> Running in 539125f7a7fe
+ ---> a6262061991e
+Removing intermediate container 539125f7a7fe
+Step 34/54 : ENV TF_NEED_KAFKA 0
+ ---> Running in d46801f63d42
+ ---> f0156f80aa38
+Removing intermediate container d46801f63d42
+Step 35/54 : ENV TF_NEED_OPENCL_SYCL 0
+ ---> Running in 740deff28be1
+ ---> fd600825ddb9
+Removing intermediate container 740deff28be1
+Step 36/54 : ENV TF_DOWNLOAD_CLANG 0
+ ---> Running in 5dd36203c1d4
+ ---> 76cacac21713
+Removing intermediate container 5dd36203c1d4
+Step 37/54 : ENV TF_SET_ANDROID_WORKSPACE 0
+ ---> Running in fc41e2a1cd89
+ ---> 83801c877eab
+Removing intermediate container fc41e2a1cd89
+Step 38/54 : ENV PATH /home/$NB_USER/.local/bin:/usr/local/bin:$PATH
+ ---> Running in 363d8d65dfab
+ ---> cc5338cbfd6a
+Removing intermediate container 363d8d65dfab
+Step 39/54 : ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-1.8.0*
+ ---> Running in 351f95ad3236
+ ---> 0d7e6e563cfd
+Removing intermediate container 351f95ad3236
+Step 40/54 : RUN echo 'PS1="\u@\h:\w\\$ \[$(tput sgr0)\]"' >> /root/.bashrc     && yum install -y centos-release-scl-rh     && if [ "$PYTHON_VERSION" = "2.7" ] ; then yum install -y scl-utils python27 python-devel python27-python-devel && scl enable python27 bash ; fi     && if [ "$PYTHON_VERSION" = "3.5" ] ; then yum install -y scl-utils rh-python35 rh-python35-python-pip rh-python35-scldevel && scl enable rh-python35 bash && export PATH=/opt/rh/rh-python35/root/usr/bin:$PATH; fi     && if [ "$PYTHON_VERSION" = "3.6" ] ; then yum install -y scl-utils rh-python36 rh-python36-python-pip rh-python36-python-devel && scl enable rh-python36 bash && export PATH=/opt/rh/rh-python36/root/usr/bin:$PATH ; fi     && echo "-----IMAGE_TEST--------"     && if [ "$PYTHON_VERSION" = "3.5" ] ; then ls -l /opt/rh/rh-python35/root/usr/bin ; fi     && if [ "$PYTHON_VERSION" = "3.6" ] ; then ls -l /opt/rh/rh-python36/root/usr/bin ; fi     && echo "which_python="`which python`     && echo "link_which_python=`ls -l $(which python) | awk '{print  $9 $10 $11}'`"     && echo "link_bin_python=`ls -l /usr/bin/python |awk '{print  $9 $10 $11}'`"     && echo "which_pip="`which pip`     && echo "which_pip_site="`pip --version |awk '{print $4}'`     && echo "link_which_pip=`ls -l $(which pip) | awk '{print  $9 $10 $11}'`"     && echo "PATH=$PATH"     && echo "PYTHON_VERSION=$PYTHON_VERSION"     && echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"     && echo "PYTHON_LIB_PATH=$PYTHON_LIB_PATH"     && echo "-----IMAGE_TEST--------"     && yum install -y epel-release     && yum install -y tar tree git curl wget java-headless bzip2 gnupg2 sqlite3 protobuf-compiler     && chgrp -R root /opt     && chmod -R a+rwx /opt     && chmod a+rw /etc/passwd     && curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"     && yum install -y vim gcc gcc-c++ glibc-devel openssl-devel perf     && yum install -y which findutils x86info cpuid dmidecode procps     && yum install -y kernel-devel make automake autoconf swig zip unzip libtool binutils     && yum install -y freetype-devel libpng12-devel zlib-devel giflib-devel zeromq3-devel     && yum install -y libxml2 libxml2-devel libxslt libxslt-devel gzip     && yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel patch gdb file pciutils cmake     && echo "-----IMAGE_TEST--------"     && echo "which_python="`which python`     && echo "link_which_python=`ls -l $(which python) | awk '{print  $9 $10 $11}'`"     && echo "link_bin_python=`ls -l /usr/bin/python |awk '{print  $9 $10 $11}'`"     && echo "which_pip="`which pip`     && echo "which_pip_site="`pip --version |awk '{print $4}'`     && echo "link_which_pip=`ls -l $(which pip) | awk '{print  $9 $10 $11}'`"     && echo "PATH=$PATH"     && echo "PYTHON_VERSION=$PYTHON_VERSION"     && echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"     && echo "PYTHON_LIB_PATH=$PYTHON_LIB_PATH"     && echo "-----IMAGE_TEST--------"     && if [ "$PYTHON_VERSION" = "2.7" ] ; then python$PYTHON_VERSION get-pip.py ; fi     && if [ "$PYTHON_VERSION" = "3.5" ] ; then  export LD_LIBRARY_PATH="/opt/rh/rh-python35/root/usr/lib64/:/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" && export PYTHON_LIB_PATH=/opt/rh/rh-python35/root/usr/lib/python3.5/site-packages && rm -fr /usr/bin/python && ln -s /opt/rh/rh-python35/root/usr/bin/python3.5 /usr/bin/python && python get-pip.py && rm -fr /usr/bin/pip && ln -s /opt/rh/rh-python35/root/usr/bin/pip /usr/bin/pip ; fi     && if [ "$PYTHON_VERSION" = "3.6" ] ; then  export LD_LIBRARY_PATH="/opt/rh/rh-python36/root/usr/lib64/:/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" && export PYTHON_LIB_PATH=/opt/rh/rh-python36/root/usr/lib/python3.6/site-packages && rm -fr /usr/bin/python && ln -s /opt/rh/rh-python36/root/usr/bin/python3.6 /usr/bin/python && python get-pip.py && rm -fr /usr/bin/pip && ln -s /opt/rh/rh-python36/root/usr/bin/pip /usr/bin/pip ; fi     && echo "-----IMAGE_TEST--------"     && if [ "$PYTHON_VERSION" = "3.5" ] ; then echo "PYTHON_H="`rpm -ql rh-python35-python-devel | grep Python.h` ; fi 	&& if [ "$PYTHON_VERSION" = "3.5" ] ; then ls -l /opt/rh/rh-python35/root/usr/include/ && ls -l /opt/rh/rh-python35/root/usr/lib64/ ; fi     && if [ "$PYTHON_VERSION" = "3.6" ] ; then echo "PYTHON_H="`rpm -ql rh-python36-python-devel | grep Python.h` ; fi     && if [ "$PYTHON_VERSION" = "3.6" ] ; then ls -l /opt/rh/rh-python36/root/usr/include/ && ls -l /opt/rh/rh-python36/root/usr/lib64/ ; fi     && echo "which_python="`which python`     && echo "link_which_python=`ls -l $(which python) | awk '{print  $9 $10 $11}'`"     && echo "link_bin_python=`ls -l /usr/bin/python |awk '{print  $9 $10 $11}'`"     && echo "which_pip="`which pip`     && echo "link_which_pip=`ls -l $(which pip) | awk '{print  $9 $10 $11}'`"     && echo "which_pip_ver="`pip --version`     && echo "which_pip_site="`pip --version |awk '{print $4}'`     && echo "PATH=$PATH"     && echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"     && echo "PYTHON_LIB_PATH=$PYTHON_LIB_PATH"     && echo "PYTHON_VERSION=$PYTHON_VERSION"     && ls -l /usr/bin/python*     && echo "-----IMAGE_TEST--------"
+ ---> Running in d424b17c73d6
+
+Loaded plugins: fastestmirror, ovl
+Determining fastest mirrors
+ * base: repos-va.psychz.net
+ * extras: repos-va.psychz.net
+ * updates: repos-va.psychz.net
+Resolving Dependencies
+--> Running transaction check
+---> Package centos-release-scl-rh.noarch 0:2-2.el7.centos will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                    Arch        Version               Repository   Size
+================================================================================
+Installing:
+ centos-release-scl-rh      noarch      2-2.el7.centos        extras       12 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 12 k
+Installed size: 19 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : centos-release-scl-rh-2-2.el7.centos.noarch                  1/1 
+  Verifying  : centos-release-scl-rh-2-2.el7.centos.noarch                  1/1 
+
+Installed:
+  centos-release-scl-rh.noarch 0:2-2.el7.centos                                 
+
+Complete!
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: repos-va.psychz.net
+ * extras: repos-va.psychz.net
+ * updates: repos-va.psychz.net
+Resolving Dependencies
+--> Running transaction check
+---> Package rh-python36.x86_64 0:2.0-1.el7 will be installed
+--> Processing Dependency: rh-python36-runtime for package: rh-python36-2.0-1.el7.x86_64
+--> Processing Dependency: rh-python36-python-virtualenv for package: rh-python36-2.0-1.el7.x86_64
+--> Processing Dependency: rh-python36-python-setuptools for package: rh-python36-2.0-1.el7.x86_64
+--> Processing Dependency: rh-python36-python for package: rh-python36-2.0-1.el7.x86_64
+---> Package rh-python36-python-devel.x86_64 0:3.6.3-3.el7 will be installed
+--> Processing Dependency: rh-python36-python-libs(x86-64) = 3.6.3-3.el7 for package: rh-python36-python-devel-3.6.3-3.el7.x86_64
+--> Processing Dependency: scl-utils-build for package: rh-python36-python-devel-3.6.3-3.el7.x86_64
+--> Processing Dependency: libpython3.6m.so.rh-python36-1.0()(64bit) for package: rh-python36-python-devel-3.6.3-3.el7.x86_64
+---> Package rh-python36-python-pip.noarch 0:9.0.1-2.el7 will be installed
+---> Package scl-utils.x86_64 0:20130529-17.el7_1 will be updated
+---> Package scl-utils.x86_64 0:20130529-19.el7 will be an update
+--> Running transaction check
+---> Package rh-python36-python.x86_64 0:3.6.3-3.el7 will be installed
+---> Package rh-python36-python-libs.x86_64 0:3.6.3-3.el7 will be installed
+--> Processing Dependency: libcrypto.so.10(OPENSSL_1.0.2)(64bit) for package: rh-python36-python-libs-3.6.3-3.el7.x86_64
+---> Package rh-python36-python-setuptools.noarch 0:36.5.0-1.el7 will be installed
+---> Package rh-python36-python-virtualenv.noarch 0:15.1.0-2.el7 will be installed
+---> Package rh-python36-runtime.x86_64 0:2.0-1.el7 will be installed
+---> Package scl-utils-build.x86_64 0:20130529-19.el7 will be installed
+--> Processing Dependency: redhat-rpm-config for package: scl-utils-build-20130529-19.el7.x86_64
+--> Processing Dependency: iso-codes for package: scl-utils-build-20130529-19.el7.x86_64
+--> Running transaction check
+---> Package iso-codes.noarch 0:3.46-2.el7 will be installed
+--> Processing Dependency: xml-common for package: iso-codes-3.46-2.el7.noarch
+---> Package openssl-libs.x86_64 1:1.0.1e-60.el7 will be updated
+--> Processing Dependency: openssl-libs(x86-64) = 1:1.0.1e-60.el7 for package: 1:openssl-devel-1.0.1e-60.el7.x86_64
+---> Package openssl-libs.x86_64 1:1.0.2k-16.el7 will be an update
+---> Package redhat-rpm-config.noarch 0:9.1.0-87.el7.centos will be installed
+--> Processing Dependency: dwz >= 0.4 for package: redhat-rpm-config-9.1.0-87.el7.centos.noarch
+--> Processing Dependency: zip for package: redhat-rpm-config-9.1.0-87.el7.centos.noarch
+--> Processing Dependency: perl-srpm-macros for package: redhat-rpm-config-9.1.0-87.el7.centos.noarch
+--> Running transaction check
+---> Package dwz.x86_64 0:0.11-3.el7 will be installed
+---> Package openssl-devel.x86_64 1:1.0.1e-60.el7 will be updated
+---> Package openssl-devel.x86_64 1:1.0.2k-16.el7 will be an update
+---> Package perl-srpm-macros.noarch 0:1-8.el7 will be installed
+---> Package xml-common.noarch 0:0.6.3-39.el7 will be installed
+---> Package zip.x86_64 0:3.0-11.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                       Arch   Version              Repository      Size
+================================================================================
+Installing:
+ rh-python36                   x86_64 2.0-1.el7            centos-sclo-rh 2.7 k
+ rh-python36-python-devel      x86_64 3.6.3-3.el7          centos-sclo-rh 840 k
+ rh-python36-python-pip        noarch 9.0.1-2.el7          centos-sclo-rh 1.7 M
+Updating:
+ scl-utils                     x86_64 20130529-19.el7      base            24 k
+Installing for dependencies:
+ dwz                           x86_64 0.11-3.el7           base            99 k
+ iso-codes                     noarch 3.46-2.el7           base           2.7 M
+ perl-srpm-macros              noarch 1-8.el7              base           4.6 k
+ redhat-rpm-config             noarch 9.1.0-87.el7.centos  base            81 k
+ rh-python36-python            x86_64 3.6.3-3.el7          centos-sclo-rh  55 k
+ rh-python36-python-libs       x86_64 3.6.3-3.el7          centos-sclo-rh 7.5 M
+ rh-python36-python-setuptools noarch 36.5.0-1.el7         centos-sclo-rh 566 k
+ rh-python36-python-virtualenv noarch 15.1.0-2.el7         centos-sclo-rh 1.8 M
+ rh-python36-runtime           x86_64 2.0-1.el7            centos-sclo-rh 1.1 M
+ scl-utils-build               x86_64 20130529-19.el7      base            18 k
+ xml-common                    noarch 0.6.3-39.el7         base            26 k
+ zip                           x86_64 3.0-11.el7           base           260 k
+Updating for dependencies:
+ openssl-devel                 x86_64 1:1.0.2k-16.el7      base           1.5 M
+ openssl-libs                  x86_64 1:1.0.2k-16.el7      base           1.2 M
+
+Transaction Summary
+================================================================================
+Install  3 Packages (+12 Dependent packages)
+Upgrade  1 Package  (+ 2 Dependent packages)
+
+Total download size: 20 M
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+warning: /var/cache/yum/x86_64/7/centos-sclo-rh/packages/rh-python36-2.0-1.el7.x86_64.rpm: Header V4 RSA/SHA1 Signature, key ID f2ee9d55: NOKEY
+Public key for rh-python36-2.0-1.el7.x86_64.rpm is not installed
+--------------------------------------------------------------------------------
+Total                                              9.8 MB/s |  20 MB  00:02     
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo
+Importing GPG key 0xF2EE9D55:
+ Userid     : "CentOS SoftwareCollections SIG (https://wiki.centos.org/SpecialInterestGroup/SCLo) <security@centos.org>"
+ Fingerprint: c4db d535 b1fb ba14 f8ba 64a8 4eb8 4e71 f2ee 9d55
+ Package    : centos-release-scl-rh-2-2.el7.centos.noarch (@extras)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : 1:openssl-libs-1.0.2k-16.el7.x86_64                         1/21 
+  Installing : zip-3.0-11.el7.x86_64                                       2/21 
+  Installing : perl-srpm-macros-1-8.el7.noarch                             3/21 
+  Installing : dwz-0.11-3.el7.x86_64                                       4/21 
+  Installing : redhat-rpm-config-9.1.0-87.el7.centos.noarch                5/21 
+  Updating   : scl-utils-20130529-19.el7.x86_64                            6/21 
+  Installing : rh-python36-runtime-2.0-1.el7.x86_64                        7/21 
+  Installing : rh-python36-python-setuptools-36.5.0-1.el7.noarch           8/21 
+  Installing : rh-python36-python-pip-9.0.1-2.el7.noarch                   9/21 
+  Installing : rh-python36-python-libs-3.6.3-3.el7.x86_64                 10/21 
+  Installing : rh-python36-python-3.6.3-3.el7.x86_64                      11/21 
+  Installing : xml-common-0.6.3-39.el7.noarch                             12/21 
+  Installing : iso-codes-3.46-2.el7.noarch                                13/21 
+  Installing : scl-utils-build-20130529-19.el7.x86_64                     14/21 
+  Installing : rh-python36-python-devel-3.6.3-3.el7.x86_64                15/21 
+  Installing : rh-python36-python-virtualenv-15.1.0-2.el7.noarch          16/21 
+  Installing : rh-python36-2.0-1.el7.x86_64                               17/21 
+  Updating   : 1:openssl-devel-1.0.2k-16.el7.x86_64                       18/21 
+  Cleanup    : 1:openssl-devel-1.0.1e-60.el7.x86_64                       19/21 
+  Cleanup    : 1:openssl-libs-1.0.1e-60.el7.x86_64                        20/21 
+  Cleanup    : scl-utils-20130529-17.el7_1.x86_64                         21/21 
+  Verifying  : rh-python36-runtime-2.0-1.el7.x86_64                        1/21 
+  Verifying  : rh-python36-2.0-1.el7.x86_64                                2/21 
+  Verifying  : xml-common-0.6.3-39.el7.noarch                              3/21 
+  Verifying  : iso-codes-3.46-2.el7.noarch                                 4/21 
+  Verifying  : scl-utils-20130529-19.el7.x86_64                            5/21 
+  Verifying  : 1:openssl-libs-1.0.2k-16.el7.x86_64                         6/21 
+  Verifying  : dwz-0.11-3.el7.x86_64                                       7/21 
+  Verifying  : rh-python36-python-setuptools-36.5.0-1.el7.noarch           8/21 
+  Verifying  : perl-srpm-macros-1-8.el7.noarch                             9/21 
+  Verifying  : zip-3.0-11.el7.x86_64                                      10/21 
+  Verifying  : 1:openssl-devel-1.0.2k-16.el7.x86_64                       11/21 
+  Verifying  : redhat-rpm-config-9.1.0-87.el7.centos.noarch               12/21 
+  Verifying  : rh-python36-python-pip-9.0.1-2.el7.noarch                  13/21 
+  Verifying  : rh-python36-python-devel-3.6.3-3.el7.x86_64                14/21 
+  Verifying  : scl-utils-build-20130529-19.el7.x86_64                     15/21 
+  Verifying  : rh-python36-python-virtualenv-15.1.0-2.el7.noarch          16/21 
+  Verifying  : rh-python36-python-libs-3.6.3-3.el7.x86_64                 17/21 
+  Verifying  : rh-python36-python-3.6.3-3.el7.x86_64                      18/21 
+  Verifying  : 1:openssl-libs-1.0.1e-60.el7.x86_64                        19/21 
+  Verifying  : 1:openssl-devel-1.0.1e-60.el7.x86_64                       20/21 
+  Verifying  : scl-utils-20130529-17.el7_1.x86_64                         21/21 
+
+Installed:
+  rh-python36.x86_64 0:2.0-1.el7                                                
+  rh-python36-python-devel.x86_64 0:3.6.3-3.el7                                 
+  rh-python36-python-pip.noarch 0:9.0.1-2.el7                                   
+
+Dependency Installed:
+  dwz.x86_64 0:0.11-3.el7                                                       
+  iso-codes.noarch 0:3.46-2.el7                                                 
+  perl-srpm-macros.noarch 0:1-8.el7                                             
+  redhat-rpm-config.noarch 0:9.1.0-87.el7.centos                                
+  rh-python36-python.x86_64 0:3.6.3-3.el7                                       
+  rh-python36-python-libs.x86_64 0:3.6.3-3.el7                                  
+  rh-python36-python-setuptools.noarch 0:36.5.0-1.el7                           
+  rh-python36-python-virtualenv.noarch 0:15.1.0-2.el7                           
+  rh-python36-runtime.x86_64 0:2.0-1.el7                                        
+  scl-utils-build.x86_64 0:20130529-19.el7                                      
+  xml-common.noarch 0:0.6.3-39.el7                                              
+  zip.x86_64 0:3.0-11.el7                                                       
+
+Updated:
+  scl-utils.x86_64 0:20130529-19.el7                                            
+
+Dependency Updated:
+  openssl-devel.x86_64 1:1.0.2k-16.el7    openssl-libs.x86_64 1:1.0.2k-16.el7   
+
+Complete!
+-----IMAGE_TEST--------
+total 64
+-rwxr-xr-x. 1 root root   258 Oct 24  2017 easy_install
+-rwxr-xr-x. 1 root root   258 Oct 24  2017 easy_install-3.6
+-rwxr-xr-x. 1 root root   230 Jul 28  2017 pip
+-rwxr-xr-x. 1 root root   230 Jul 28  2017 pip3
+-rwxr-xr-x. 1 root root   230 Jul 28  2017 pip3.6
+lrwxrwxrwx. 1 root root     6 Mar  5 19:45 pydoc -> pydoc3
+lrwxrwxrwx. 1 root root     8 Mar  5 19:45 pydoc3 -> pydoc3.6
+-rwxr-xr-x. 1 root root   102 Mar 20  2018 pydoc3.6
+lrwxrwxrwx. 1 root root     7 Mar  5 19:45 python -> python3
+lrwxrwxrwx. 1 root root     9 Mar  5 19:45 python3 -> python3.6
+-rwxr-xr-x. 2 root root 11312 Mar 20  2018 python3.6
+lrwxrwxrwx. 1 root root    17 Mar  5 19:45 python3.6-config -> python3.6m-config
+-rwxr-xr-x. 2 root root 11312 Mar 20  2018 python3.6m
+-rwxr-xr-x. 1 root root   173 Mar 20  2018 python3.6m-config
+-rwxr-xr-x. 1 root root  3550 Mar 20  2018 python3.6m-x86_64-config
+lrwxrwxrwx. 1 root root    16 Mar  5 19:45 python3-config -> python3.6-config
+lrwxrwxrwx. 1 root root    14 Mar  5 19:45 python-config -> python3-config
+lrwxrwxrwx. 1 root root    10 Mar  5 19:45 pyvenv -> pyvenv-3.6
+-rwxr-xr-x. 1 root root   459 Mar 20  2018 pyvenv-3.6
+-rwxr-xr-x. 1 root root   424 Jul 30  2017 virtualenv
+which_python=/opt/rh/rh-python36/root/usr/bin/python
+link_which_python=/opt/rh/rh-python36/root/usr/bin/python->python3
+link_bin_python=/usr/bin/python->python2
+which_pip=/opt/rh/rh-python36/root/usr/bin/pip
+which_pip_site=/opt/rh/rh-python36/root/usr/lib/python3.6/site-packages
+link_which_pip=/opt/rh/rh-python36/root/usr/bin/pip
+PATH=/opt/rh/rh-python36/root/usr/bin:/home/default/.local/bin:/usr/local/bin:/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PYTHON_VERSION=3.6
+LD_LIBRARY_PATH=/usr/local/lib;
+PYTHON_LIB_PATH=/usr/lib64/python3.6/site-packages
+-----IMAGE_TEST--------
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: repos-va.psychz.net
+ * extras: repos-va.psychz.net
+ * updates: repos-va.psychz.net
+Resolving Dependencies
+--> Running transaction check
+---> Package epel-release.noarch 0:7-11 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                Arch             Version         Repository        Size
+================================================================================
+Installing:
+ epel-release           noarch           7-11            extras            15 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 15 k
+Installed size: 24 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : epel-release-7-11.noarch                                     1/1 
+  Verifying  : epel-release-7-11.noarch                                     1/1 
+
+Installed:
+  epel-release.noarch 0:7-11                                                    
+
+Complete!
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: repos-va.psychz.net
+ * epel: mirror.cogentco.com
+ * extras: repos-va.psychz.net
+ * updates: repos-va.psychz.net
+Package bzip2-1.0.6-13.el7.x86_64 already installed and latest version
+No package sqlite3 available.
+Resolving Dependencies
+--> Running transaction check
+---> Package curl.x86_64 0:7.29.0-35.el7.centos will be updated
+---> Package curl.x86_64 0:7.29.0-51.el7 will be an update
+--> Processing Dependency: libcurl = 7.29.0-51.el7 for package: curl-7.29.0-51.el7.x86_64
+---> Package git.x86_64 0:1.8.3.1-6.el7_2.1 will be updated
+--> Processing Dependency: git = 1.8.3.1-6.el7_2.1 for package: perl-Git-1.8.3.1-6.el7_2.1.noarch
+---> Package git.x86_64 0:1.8.3.1-20.el7 will be an update
+---> Package gnupg2.x86_64 0:2.0.22-4.el7 will be updated
+---> Package gnupg2.x86_64 0:2.0.22-5.el7_5 will be an update
+---> Package java-1.8.0-openjdk-headless.x86_64 1:1.8.0.191.b12-1.el7_6 will be installed
+--> Processing Dependency: tzdata-java >= 2015d for package: 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: nss-softokn(x86-64) >= 3.36.0 for package: 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: nss(x86-64) >= 3.36.0 for package: 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: copy-jdk-configs >= 2.2 for package: 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: lksctp-tools(x86-64) for package: 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: jpackage-utils for package: 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64
+---> Package protobuf-compiler.x86_64 0:2.5.0-8.el7 will be installed
+--> Processing Dependency: protobuf = 2.5.0-8.el7 for package: protobuf-compiler-2.5.0-8.el7.x86_64
+--> Processing Dependency: libprotobuf.so.8()(64bit) for package: protobuf-compiler-2.5.0-8.el7.x86_64
+---> Package tar.x86_64 2:1.26-31.el7 will be updated
+---> Package tar.x86_64 2:1.26-35.el7 will be an update
+---> Package tree.x86_64 0:1.6.0-10.el7 will be installed
+---> Package wget.x86_64 0:1.14-13.el7 will be updated
+---> Package wget.x86_64 0:1.14-18.el7 will be an update
+--> Running transaction check
+---> Package copy-jdk-configs.noarch 0:3.3-10.el7_5 will be installed
+---> Package javapackages-tools.noarch 0:3.4.1-11.el7 will be installed
+--> Processing Dependency: python-javapackages = 3.4.1-11.el7 for package: javapackages-tools-3.4.1-11.el7.noarch
+---> Package libcurl.x86_64 0:7.29.0-35.el7.centos will be updated
+--> Processing Dependency: libcurl = 7.29.0-35.el7.centos for package: libcurl-devel-7.29.0-35.el7.centos.x86_64
+---> Package libcurl.x86_64 0:7.29.0-51.el7 will be an update
+--> Processing Dependency: nss-pem(x86-64) >= 1.0.3-5 for package: libcurl-7.29.0-51.el7.x86_64
+---> Package lksctp-tools.x86_64 0:1.0.17-2.el7 will be installed
+---> Package nss.x86_64 0:3.21.3-2.el7_3 will be updated
+--> Processing Dependency: nss = 3.21.3-2.el7_3 for package: nss-sysinit-3.21.3-2.el7_3.x86_64
+--> Processing Dependency: nss(x86-64) = 3.21.3-2.el7_3 for package: nss-tools-3.21.3-2.el7_3.x86_64
+---> Package nss.x86_64 0:3.36.0-7.1.el7_6 will be an update
+--> Processing Dependency: nss-util >= 3.36.0-1.1 for package: nss-3.36.0-7.1.el7_6.x86_64
+--> Processing Dependency: nspr >= 4.19.0 for package: nss-3.36.0-7.1.el7_6.x86_64
+--> Processing Dependency: libnssutil3.so(NSSUTIL_3.31)(64bit) for package: nss-3.36.0-7.1.el7_6.x86_64
+--> Processing Dependency: libnssutil3.so(NSSUTIL_3.24)(64bit) for package: nss-3.36.0-7.1.el7_6.x86_64
+---> Package nss-softokn.x86_64 0:3.16.2.3-14.4.el7 will be updated
+---> Package nss-softokn.x86_64 0:3.36.0-5.el7_5 will be an update
+--> Processing Dependency: nss-softokn-freebl(x86-64) >= 3.36.0-5.el7_5 for package: nss-softokn-3.36.0-5.el7_5.x86_64
+---> Package perl-Git.noarch 0:1.8.3.1-6.el7_2.1 will be updated
+---> Package perl-Git.noarch 0:1.8.3.1-20.el7 will be an update
+---> Package protobuf.x86_64 0:2.5.0-8.el7 will be installed
+---> Package tzdata-java.noarch 0:2018i-1.el7 will be installed
+--> Running transaction check
+---> Package libcurl-devel.x86_64 0:7.29.0-35.el7.centos will be updated
+---> Package libcurl-devel.x86_64 0:7.29.0-51.el7 will be an update
+---> Package nspr.x86_64 0:4.11.0-1.el7_2 will be updated
+---> Package nspr.x86_64 0:4.19.0-1.el7_5 will be an update
+---> Package nss-pem.x86_64 0:1.0.3-5.el7 will be installed
+---> Package nss-softokn-freebl.x86_64 0:3.16.2.3-14.4.el7 will be updated
+---> Package nss-softokn-freebl.x86_64 0:3.36.0-5.el7_5 will be an update
+---> Package nss-sysinit.x86_64 0:3.21.3-2.el7_3 will be updated
+---> Package nss-sysinit.x86_64 0:3.36.0-7.1.el7_6 will be an update
+---> Package nss-tools.x86_64 0:3.21.3-2.el7_3 will be updated
+---> Package nss-tools.x86_64 0:3.36.0-7.1.el7_6 will be an update
+---> Package nss-util.x86_64 0:3.21.3-1.1.el7_3 will be updated
+---> Package nss-util.x86_64 0:3.36.0-1.1.el7_6 will be an update
+---> Package python-javapackages.noarch 0:3.4.1-11.el7 will be installed
+--> Processing Dependency: python-lxml for package: python-javapackages-3.4.1-11.el7.noarch
+--> Running transaction check
+---> Package python-lxml.x86_64 0:3.2.1-4.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                      Arch    Version                    Repository
+                                                                           Size
+================================================================================
+Installing:
+ java-1.8.0-openjdk-headless  x86_64  1:1.8.0.191.b12-1.el7_6    updates   32 M
+ protobuf-compiler            x86_64  2.5.0-8.el7                base     261 k
+ tree                         x86_64  1.6.0-10.el7               base      46 k
+Updating:
+ curl                         x86_64  7.29.0-51.el7              base     269 k
+ git                          x86_64  1.8.3.1-20.el7             updates  4.4 M
+ gnupg2                       x86_64  2.0.22-5.el7_5             base     1.5 M
+ tar                          x86_64  2:1.26-35.el7              base     846 k
+ wget                         x86_64  1.14-18.el7                base     547 k
+Installing for dependencies:
+ copy-jdk-configs             noarch  3.3-10.el7_5               base      21 k
+ javapackages-tools           noarch  3.4.1-11.el7               base      73 k
+ lksctp-tools                 x86_64  1.0.17-2.el7               base      88 k
+ nss-pem                      x86_64  1.0.3-5.el7                base      74 k
+ protobuf                     x86_64  2.5.0-8.el7                base     338 k
+ python-javapackages          noarch  3.4.1-11.el7               base      31 k
+ python-lxml                  x86_64  3.2.1-4.el7                base     758 k
+ tzdata-java                  noarch  2018i-1.el7                updates  187 k
+Updating for dependencies:
+ libcurl                      x86_64  7.29.0-51.el7              base     221 k
+ libcurl-devel                x86_64  7.29.0-51.el7              base     302 k
+ nspr                         x86_64  4.19.0-1.el7_5             base     127 k
+ nss                          x86_64  3.36.0-7.1.el7_6           updates  835 k
+ nss-softokn                  x86_64  3.36.0-5.el7_5             base     315 k
+ nss-softokn-freebl           x86_64  3.36.0-5.el7_5             base     222 k
+ nss-sysinit                  x86_64  3.36.0-7.1.el7_6           updates   62 k
+ nss-tools                    x86_64  3.36.0-7.1.el7_6           updates  515 k
+ nss-util                     x86_64  3.36.0-1.1.el7_6           updates   78 k
+ perl-Git                     noarch  1.8.3.1-20.el7             updates   55 k
+
+Transaction Summary
+================================================================================
+Install  3 Packages (+ 8 Dependent packages)
+Upgrade  5 Packages (+10 Dependent packages)
+
+Total download size: 44 M
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+--------------------------------------------------------------------------------
+Total                                               27 MB/s |  44 MB  00:01     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : nspr-4.19.0-1.el7_5.x86_64                                  1/41 
+  Updating   : nss-util-3.36.0-1.1.el7_6.x86_64                            2/41 
+  Updating   : nss-softokn-freebl-3.36.0-5.el7_5.x86_64                    3/41 
+  Updating   : nss-softokn-3.36.0-5.el7_5.x86_64                           4/41 
+  Installing : nss-pem-1.0.3-5.el7.x86_64                                  5/41 
+  Updating   : nss-sysinit-3.36.0-7.1.el7_6.x86_64                         6/41 
+  Updating   : nss-3.36.0-7.1.el7_6.x86_64                                 7/41 
+  Updating   : libcurl-7.29.0-51.el7.x86_64                                8/41 
+  Updating   : perl-Git-1.8.3.1-20.el7.noarch                              9/41 
+  Updating   : git-1.8.3.1-20.el7.x86_64                                  10/41 
+  Installing : python-lxml-3.2.1-4.el7.x86_64                             11/41 
+  Installing : python-javapackages-3.4.1-11.el7.noarch                    12/41 
+  Installing : javapackages-tools-3.4.1-11.el7.noarch                     13/41 
+  Installing : copy-jdk-configs-3.3-10.el7_5.noarch                       14/41 
+  Installing : lksctp-tools-1.0.17-2.el7.x86_64                           15/41 
+  Installing : protobuf-2.5.0-8.el7.x86_64                                16/41 
+  Installing : tzdata-java-2018i-1.el7.noarch                             17/41 
+  Installing : 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_   18/41 
+  Installing : protobuf-compiler-2.5.0-8.el7.x86_64                       19/41 
+  Updating   : gnupg2-2.0.22-5.el7_5.x86_64                               20/41 
+install-info: No such file or directory for /usr/share/info/gnupg.info
+  Updating   : curl-7.29.0-51.el7.x86_64                                  21/41 
+  Updating   : libcurl-devel-7.29.0-51.el7.x86_64                         22/41 
+  Updating   : nss-tools-3.36.0-7.1.el7_6.x86_64                          23/41 
+  Updating   : wget-1.14-18.el7.x86_64                                    24/41 
+install-info: No such file or directory for /usr/share/info/wget.info.gz
+  Installing : tree-1.6.0-10.el7.x86_64                                   25/41 
+  Updating   : 2:tar-1.26-35.el7.x86_64                                   26/41 
+  Cleanup    : nss-tools-3.21.3-2.el7_3.x86_64                            27/41 
+  Cleanup    : curl-7.29.0-35.el7.centos.x86_64                           28/41 
+  Cleanup    : git-1.8.3.1-6.el7_2.1.x86_64                               29/41 
+  Cleanup    : perl-Git-1.8.3.1-6.el7_2.1.noarch                          30/41 
+  Cleanup    : libcurl-devel-7.29.0-35.el7.centos.x86_64                  31/41 
+  Cleanup    : gnupg2-2.0.22-4.el7.x86_64                                 32/41 
+  Cleanup    : libcurl-7.29.0-35.el7.centos.x86_64                        33/41 
+  Cleanup    : nss-sysinit-3.21.3-2.el7_3.x86_64                          34/41 
+  Cleanup    : nss-3.21.3-2.el7_3.x86_64                                  35/41 
+  Cleanup    : nss-softokn-3.16.2.3-14.4.el7.x86_64                       36/41 
+  Cleanup    : nss-util-3.21.3-1.1.el7_3.x86_64                           37/41 
+  Cleanup    : nspr-4.11.0-1.el7_2.x86_64                                 38/41 
+  Cleanup    : nss-softokn-freebl-3.16.2.3-14.4.el7.x86_64                39/41 
+  Cleanup    : wget-1.14-13.el7.x86_64                                    40/41 
+  Cleanup    : 2:tar-1.26-31.el7.x86_64                                   41/41 
+  Verifying  : python-javapackages-3.4.1-11.el7.noarch                     1/41 
+  Verifying  : nss-tools-3.36.0-7.1.el7_6.x86_64                           2/41 
+  Verifying  : 2:tar-1.26-35.el7.x86_64                                    3/41 
+  Verifying  : protobuf-compiler-2.5.0-8.el7.x86_64                        4/41 
+  Verifying  : tzdata-java-2018i-1.el7.noarch                              5/41 
+  Verifying  : nss-util-3.36.0-1.1.el7_6.x86_64                            6/41 
+  Verifying  : gnupg2-2.0.22-5.el7_5.x86_64                                7/41 
+  Verifying  : protobuf-2.5.0-8.el7.x86_64                                 8/41 
+  Verifying  : nss-pem-1.0.3-5.el7.x86_64                                  9/41 
+  Verifying  : nss-sysinit-3.36.0-7.1.el7_6.x86_64                        10/41 
+  Verifying  : perl-Git-1.8.3.1-20.el7.noarch                             11/41 
+  Verifying  : tree-1.6.0-10.el7.x86_64                                   12/41 
+  Verifying  : lksctp-tools-1.0.17-2.el7.x86_64                           13/41 
+  Verifying  : nss-3.36.0-7.1.el7_6.x86_64                                14/41 
+  Verifying  : copy-jdk-configs-3.3-10.el7_5.noarch                       15/41 
+  Verifying  : git-1.8.3.1-20.el7.x86_64                                  16/41 
+  Verifying  : wget-1.14-18.el7.x86_64                                    17/41 
+  Verifying  : javapackages-tools-3.4.1-11.el7.noarch                     18/41 
+  Verifying  : libcurl-7.29.0-51.el7.x86_64                               19/41 
+  Verifying  : 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_   20/41 
+  Verifying  : nss-softokn-freebl-3.36.0-5.el7_5.x86_64                   21/41 
+  Verifying  : nspr-4.19.0-1.el7_5.x86_64                                 22/41 
+  Verifying  : python-lxml-3.2.1-4.el7.x86_64                             23/41 
+  Verifying  : curl-7.29.0-51.el7.x86_64                                  24/41 
+  Verifying  : libcurl-devel-7.29.0-51.el7.x86_64                         25/41 
+  Verifying  : nss-softokn-3.36.0-5.el7_5.x86_64                          26/41 
+  Verifying  : nss-softokn-3.16.2.3-14.4.el7.x86_64                       27/41 
+  Verifying  : wget-1.14-13.el7.x86_64                                    28/41 
+  Verifying  : nss-util-3.21.3-1.1.el7_3.x86_64                           29/41 
+  Verifying  : 2:tar-1.26-31.el7.x86_64                                   30/41 
+  Verifying  : perl-Git-1.8.3.1-6.el7_2.1.noarch                          31/41 
+  Verifying  : nss-softokn-freebl-3.16.2.3-14.4.el7.x86_64                32/41 
+  Verifying  : nss-3.21.3-2.el7_3.x86_64                                  33/41 
+  Verifying  : nss-sysinit-3.21.3-2.el7_3.x86_64                          34/41 
+  Verifying  : libcurl-7.29.0-35.el7.centos.x86_64                        35/41 
+  Verifying  : nss-tools-3.21.3-2.el7_3.x86_64                            36/41 
+  Verifying  : libcurl-devel-7.29.0-35.el7.centos.x86_64                  37/41 
+  Verifying  : curl-7.29.0-35.el7.centos.x86_64                           38/41 
+  Verifying  : nspr-4.11.0-1.el7_2.x86_64                                 39/41 
+  Verifying  : git-1.8.3.1-6.el7_2.1.x86_64                               40/41 
+  Verifying  : gnupg2-2.0.22-4.el7.x86_64                                 41/41 
+
+Installed:
+  java-1.8.0-openjdk-headless.x86_64 1:1.8.0.191.b12-1.el7_6                    
+  protobuf-compiler.x86_64 0:2.5.0-8.el7                                        
+  tree.x86_64 0:1.6.0-10.el7                                                    
+
+Dependency Installed:
+  copy-jdk-configs.noarch 0:3.3-10.el7_5                                        
+  javapackages-tools.noarch 0:3.4.1-11.el7                                      
+  lksctp-tools.x86_64 0:1.0.17-2.el7                                            
+  nss-pem.x86_64 0:1.0.3-5.el7                                                  
+  protobuf.x86_64 0:2.5.0-8.el7                                                 
+  python-javapackages.noarch 0:3.4.1-11.el7                                     
+  python-lxml.x86_64 0:3.2.1-4.el7                                              
+  tzdata-java.noarch 0:2018i-1.el7                                              
+
+Updated:
+  curl.x86_64 0:7.29.0-51.el7              git.x86_64 0:1.8.3.1-20.el7          
+  gnupg2.x86_64 0:2.0.22-5.el7_5           tar.x86_64 2:1.26-35.el7             
+  wget.x86_64 0:1.14-18.el7               
+
+Dependency Updated:
+  libcurl.x86_64 0:7.29.0-51.el7                                                
+  libcurl-devel.x86_64 0:7.29.0-51.el7                                          
+  nspr.x86_64 0:4.19.0-1.el7_5                                                  
+  nss.x86_64 0:3.36.0-7.1.el7_6                                                 
+  nss-softokn.x86_64 0:3.36.0-5.el7_5                                           
+  nss-softokn-freebl.x86_64 0:3.36.0-5.el7_5                                    
+  nss-sysinit.x86_64 0:3.36.0-7.1.el7_6                                         
+  nss-tools.x86_64 0:3.36.0-7.1.el7_6                                           
+  nss-util.x86_64 0:3.36.0-1.1.el7_6                                            
+  perl-Git.noarch 0:1.8.3.1-20.el7                                              
+
+Complete!
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1659k  100 1659k    0     0  5452k      0 --:--:-- --:--:-- --:--:-- 5458k
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: repos-va.psychz.net
+ * epel: mirror.cogentco.com
+ * extras: repos-va.psychz.net
+ * updates: repos-va.psychz.net
+Package 1:openssl-devel-1.0.2k-16.el7.x86_64 already installed and latest version
+Resolving Dependencies
+--> Running transaction check
+---> Package gcc.x86_64 0:4.8.5-11.el7 will be updated
+---> Package gcc.x86_64 0:4.8.5-36.el7 will be an update
+--> Processing Dependency: libgomp = 4.8.5-36.el7 for package: gcc-4.8.5-36.el7.x86_64
+--> Processing Dependency: cpp = 4.8.5-36.el7 for package: gcc-4.8.5-36.el7.x86_64
+--> Processing Dependency: libgcc >= 4.8.5-36.el7 for package: gcc-4.8.5-36.el7.x86_64
+---> Package gcc-c++.x86_64 0:4.8.5-11.el7 will be updated
+---> Package gcc-c++.x86_64 0:4.8.5-36.el7 will be an update
+--> Processing Dependency: libstdc++-devel = 4.8.5-36.el7 for package: gcc-c++-4.8.5-36.el7.x86_64
+--> Processing Dependency: libstdc++ = 4.8.5-36.el7 for package: gcc-c++-4.8.5-36.el7.x86_64
+---> Package glibc-devel.x86_64 0:2.17-157.el7_3.1 will be updated
+---> Package glibc-devel.x86_64 0:2.17-260.el7_6.3 will be an update
+--> Processing Dependency: glibc-headers = 2.17-260.el7_6.3 for package: glibc-devel-2.17-260.el7_6.3.x86_64
+--> Processing Dependency: glibc = 2.17-260.el7_6.3 for package: glibc-devel-2.17-260.el7_6.3.x86_64
+---> Package perf.x86_64 0:3.10.0-957.5.1.el7 will be installed
+--> Processing Dependency: libslang.so.2(SLANG2)(64bit) for package: perf-3.10.0-957.5.1.el7.x86_64
+--> Processing Dependency: libnuma.so.1(libnuma_1.2)(64bit) for package: perf-3.10.0-957.5.1.el7.x86_64
+--> Processing Dependency: libnuma.so.1(libnuma_1.1)(64bit) for package: perf-3.10.0-957.5.1.el7.x86_64
+--> Processing Dependency: libslang.so.2()(64bit) for package: perf-3.10.0-957.5.1.el7.x86_64
+--> Processing Dependency: libnuma.so.1()(64bit) for package: perf-3.10.0-957.5.1.el7.x86_64
+---> Package vim-enhanced.x86_64 2:7.4.160-5.el7 will be installed
+--> Processing Dependency: vim-common = 2:7.4.160-5.el7 for package: 2:vim-enhanced-7.4.160-5.el7.x86_64
+--> Processing Dependency: libgpm.so.2()(64bit) for package: 2:vim-enhanced-7.4.160-5.el7.x86_64
+--> Running transaction check
+---> Package cpp.x86_64 0:4.8.5-11.el7 will be updated
+---> Package cpp.x86_64 0:4.8.5-36.el7 will be an update
+---> Package glibc.x86_64 0:2.17-157.el7_3.1 will be updated
+--> Processing Dependency: glibc = 2.17-157.el7_3.1 for package: glibc-common-2.17-157.el7_3.1.x86_64
+---> Package glibc.x86_64 0:2.17-260.el7_6.3 will be an update
+---> Package glibc-headers.x86_64 0:2.17-157.el7_3.1 will be updated
+---> Package glibc-headers.x86_64 0:2.17-260.el7_6.3 will be an update
+---> Package gpm-libs.x86_64 0:1.20.7-5.el7 will be installed
+---> Package libgcc.x86_64 0:4.8.5-11.el7 will be updated
+---> Package libgcc.x86_64 0:4.8.5-36.el7 will be an update
+---> Package libgomp.x86_64 0:4.8.5-11.el7 will be updated
+---> Package libgomp.x86_64 0:4.8.5-36.el7 will be an update
+---> Package libstdc++.x86_64 0:4.8.5-11.el7 will be updated
+---> Package libstdc++.x86_64 0:4.8.5-36.el7 will be an update
+---> Package libstdc++-devel.x86_64 0:4.8.5-11.el7 will be updated
+---> Package libstdc++-devel.x86_64 0:4.8.5-36.el7 will be an update
+---> Package numactl-libs.x86_64 0:2.0.9-7.el7 will be installed
+---> Package slang.x86_64 0:2.2.4-11.el7 will be installed
+---> Package vim-common.x86_64 2:7.4.160-5.el7 will be installed
+--> Processing Dependency: vim-filesystem for package: 2:vim-common-7.4.160-5.el7.x86_64
+--> Running transaction check
+---> Package glibc-common.x86_64 0:2.17-157.el7_3.1 will be updated
+---> Package glibc-common.x86_64 0:2.17-260.el7_6.3 will be an update
+---> Package vim-filesystem.x86_64 2:7.4.160-5.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package              Arch        Version                    Repository    Size
+================================================================================
+Installing:
+ perf                 x86_64      3.10.0-957.5.1.el7         updates      8.5 M
+ vim-enhanced         x86_64      2:7.4.160-5.el7            base         1.0 M
+Updating:
+ gcc                  x86_64      4.8.5-36.el7               base          16 M
+ gcc-c++              x86_64      4.8.5-36.el7               base         7.2 M
+ glibc-devel          x86_64      2.17-260.el7_6.3           updates      1.1 M
+Installing for dependencies:
+ gpm-libs             x86_64      1.20.7-5.el7               base          32 k
+ numactl-libs         x86_64      2.0.9-7.el7                base          29 k
+ slang                x86_64      2.2.4-11.el7               base         512 k
+ vim-common           x86_64      2:7.4.160-5.el7            base         5.9 M
+ vim-filesystem       x86_64      2:7.4.160-5.el7            base          10 k
+Updating for dependencies:
+ cpp                  x86_64      4.8.5-36.el7               base         5.9 M
+ glibc                x86_64      2.17-260.el7_6.3           updates      3.7 M
+ glibc-common         x86_64      2.17-260.el7_6.3           updates       12 M
+ glibc-headers        x86_64      2.17-260.el7_6.3           updates      683 k
+ libgcc               x86_64      4.8.5-36.el7               base         102 k
+ libgomp              x86_64      4.8.5-36.el7               base         157 k
+ libstdc++            x86_64      4.8.5-36.el7               base         304 k
+ libstdc++-devel      x86_64      4.8.5-36.el7               base         1.5 M
+
+Transaction Summary
+================================================================================
+Install  2 Packages (+5 Dependent packages)
+Upgrade  3 Packages (+8 Dependent packages)
+
+Total download size: 64 M
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+--------------------------------------------------------------------------------
+Total                                               36 MB/s |  64 MB  00:01     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : libgcc-4.8.5-36.el7.x86_64                                  1/29 
+  Updating   : glibc-common-2.17-260.el7_6.3.x86_64                        2/29 
+  Updating   : glibc-2.17-260.el7_6.3.x86_64                               3/29 
+warning: /etc/nsswitch.conf created as /etc/nsswitch.conf.rpmnew
+  Updating   : libstdc++-4.8.5-36.el7.x86_64                               4/29 
+  Updating   : libstdc++-devel-4.8.5-36.el7.x86_64                         5/29 
+  Installing : numactl-libs-2.0.9-7.el7.x86_64                             6/29 
+  Installing : slang-2.2.4-11.el7.x86_64                                   7/29 
+  Installing : gpm-libs-1.20.7-5.el7.x86_64                                8/29 
+  Updating   : cpp-4.8.5-36.el7.x86_64                                     9/29 
+  Updating   : libgomp-4.8.5-36.el7.x86_64                                10/29 
+  Updating   : glibc-headers-2.17-260.el7_6.3.x86_64                      11/29 
+e  Updating   : glibc-devel-2.17-260.el7_6.3.x86_64                        12/29 
+  Updating   : gcc-4.8.5-36.el7.x86_64                                    13/29 
+  Installing : 2:vim-filesystem-7.4.160-5.el7.x86_64                      14/29 
+  Installing : 2:vim-common-7.4.160-5.el7.x86_64                          15/29 
+  Installing : 2:vim-enhanced-7.4.160-5.el7.x86_64                        16/29 
+  Updating   : gcc-c++-4.8.5-36.el7.x86_64                                17/29 
+  Installing : perf-3.10.0-957.5.1.el7.x86_64                             18/29 
+  Cleanup    : gcc-c++-4.8.5-11.el7.x86_64                                19/29 
+  Cleanup    : libstdc++-devel-4.8.5-11.el7.x86_64                        20/29 
+  Cleanup    : gcc-4.8.5-11.el7.x86_64                                    21/29 
+  Cleanup    : glibc-devel-2.17-157.el7_3.1.x86_64                        22/29 
+  Cleanup    : libstdc++-4.8.5-11.el7.x86_64                              23/29 
+  Cleanup    : glibc-headers-2.17-157.el7_3.1.x86_64                      24/29 
+  Cleanup    : cpp-4.8.5-11.el7.x86_64                                    25/29 
+  Cleanup    : libgomp-4.8.5-11.el7.x86_64                                26/29 
+  Cleanup    : glibc-common-2.17-157.el7_3.1.x86_64                       27/29 
+  Cleanup    : glibc-2.17-157.el7_3.1.x86_64                              28/29 
+  Cleanup    : libgcc-4.8.5-11.el7.x86_64                                 29/29 
+  Verifying  : 2:vim-enhanced-7.4.160-5.el7.x86_64                         1/29 
+  Verifying  : libgcc-4.8.5-36.el7.x86_64                                  2/29 
+  Verifying  : numactl-libs-2.0.9-7.el7.x86_64                             3/29 
+  Verifying  : libstdc++-4.8.5-36.el7.x86_64                               4/29 
+  Verifying  : slang-2.2.4-11.el7.x86_64                                   5/29 
+  Verifying  : glibc-2.17-260.el7_6.3.x86_64                               6/29 
+  Verifying  : gcc-4.8.5-36.el7.x86_64                                     7/29 
+  Verifying  : gpm-libs-1.20.7-5.el7.x86_64                                8/29 
+  Verifying  : gcc-c++-4.8.5-36.el7.x86_64                                 9/29 
+  Verifying  : 2:vim-common-7.4.160-5.el7.x86_64                          10/29 
+  Verifying  : libstdc++-devel-4.8.5-36.el7.x86_64                        11/29 
+  Verifying  : glibc-devel-2.17-260.el7_6.3.x86_64                        12/29 
+  Verifying  : cpp-4.8.5-36.el7.x86_64                                    13/29 
+  Verifying  : libgomp-4.8.5-36.el7.x86_64                                14/29 
+  Verifying  : glibc-headers-2.17-260.el7_6.3.x86_64                      15/29 
+  Verifying  : glibc-common-2.17-260.el7_6.3.x86_64                       16/29 
+  Verifying  : perf-3.10.0-957.5.1.el7.x86_64                             17/29 
+  Verifying  : 2:vim-filesystem-7.4.160-5.el7.x86_64                      18/29 
+  Verifying  : glibc-devel-2.17-157.el7_3.1.x86_64                        19/29 
+  Verifying  : gcc-c++-4.8.5-11.el7.x86_64                                20/29 
+  Verifying  : cpp-4.8.5-11.el7.x86_64                                    21/29 
+  Verifying  : glibc-headers-2.17-157.el7_3.1.x86_64                      22/29 
+  Verifying  : glibc-common-2.17-157.el7_3.1.x86_64                       23/29 
+  Verifying  : glibc-2.17-157.el7_3.1.x86_64                              24/29 
+  Verifying  : libgcc-4.8.5-11.el7.x86_64                                 25/29 
+  Verifying  : libstdc++-4.8.5-11.el7.x86_64                              26/29 
+  Verifying  : libgomp-4.8.5-11.el7.x86_64                                27/29 
+  Verifying  : gcc-4.8.5-11.el7.x86_64                                    28/29 
+  Verifying  : libstdc++-devel-4.8.5-11.el7.x86_64                        29/29 
+
+Installed:
+  perf.x86_64 0:3.10.0-957.5.1.el7      vim-enhanced.x86_64 2:7.4.160-5.el7     
+
+Dependency Installed:
+  gpm-libs.x86_64 0:1.20.7-5.el7           numactl-libs.x86_64 0:2.0.9-7.el7   
+  slang.x86_64 0:2.2.4-11.el7              vim-common.x86_64 2:7.4.160-5.el7   
+  vim-filesystem.x86_64 2:7.4.160-5.el7   
+
+Updated:
+  gcc.x86_64 0:4.8.5-36.el7                  gcc-c++.x86_64 0:4.8.5-36.el7     
+  glibc-devel.x86_64 0:2.17-260.el7_6.3     
+
+Dependency Updated:
+  cpp.x86_64 0:4.8.5-36.el7                                                     
+  glibc.x86_64 0:2.17-260.el7_6.3                                               
+  glibc-common.x86_64 0:2.17-260.el7_6.3                                        
+  glibc-headers.x86_64 0:2.17-260.el7_6.3                                       
+  libgcc.x86_64 0:4.8.5-36.el7                                                  
+  libgomp.x86_64 0:4.8.5-36.el7                                                 
+  libstdc++.x86_64 0:4.8.5-36.el7                                               
+  libstdc++-devel.x86_64 0:4.8.5-36.el7                                         
+
+Complete!
+Failed to set locale, defaulting to C
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: repos-va.psychz.net
+ * epel: mirror.cogentco.com
+ * extras: repos-va.psychz.net
+ * updates: repos-va.psychz.net
+Package which-2.20-7.el7.x86_64 already installed and latest version
+Resolving Dependencies
+--> Running transaction check
+---> Package cpuid.x86_64 0:20170122-6.el7 will be installed
+---> Package dmidecode.x86_64 1:3.1-2.el7 will be installed
+---> Package findutils.x86_64 1:4.5.11-5.el7 will be updated
+---> Package findutils.x86_64 1:4.5.11-6.el7 will be an update
+---> Package procps-ng.x86_64 0:3.3.10-10.el7 will be updated
+---> Package procps-ng.x86_64 0:3.3.10-23.el7 will be an update
+---> Package x86info.x86_64 1:1.30-6.el7 will be installed
+--> Processing Dependency: libpci.so.3(LIBPCI_3.0)(64bit) for package: 1:x86info-1.30-6.el7.x86_64
+--> Processing Dependency: libpci.so.3()(64bit) for package: 1:x86info-1.30-6.el7.x86_64
+--> Running transaction check
+---> Package pciutils-libs.x86_64 0:3.5.1-3.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package               Arch           Version                Repository    Size
+================================================================================
+Installing:
+ cpuid                 x86_64         20170122-6.el7         base          89 k
+ dmidecode             x86_64         1:3.1-2.el7            base          78 k
+ x86info               x86_64         1:1.30-6.el7           base          70 k
+Updating:
+ findutils             x86_64         1:4.5.11-6.el7         base         559 k
+ procps-ng             x86_64         3.3.10-23.el7          base         291 k
+Installing for dependencies:
+ pciutils-libs         x86_64         3.5.1-3.el7            base          46 k
+
+Transaction Summary
+================================================================================
+Install  3 Packages (+1 Dependent package)
+Upgrade  2 Packages
+
+Total download size: 1.1 M
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+--------------------------------------------------------------------------------
+Total                                              2.6 MB/s | 1.1 MB  00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : pciutils-libs-3.5.1-3.el7.x86_64                             1/8 
+  Installing : 1:x86info-1.30-6.el7.x86_64                                  2/8 
+  Updating   : procps-ng-3.3.10-23.el7.x86_64                               3/8 
+  Installing : 1:dmidecode-3.1-2.el7.x86_64                                 4/8 
+  Installing : cpuid-20170122-6.el7.x86_64                                  5/8 
+  Updating   : 1:findutils-4.5.11-6.el7.x86_64                              6/8 
+  Cleanup    : procps-ng-3.3.10-10.el7.x86_64                               7/8 
+  Cleanup    : 1:findutils-4.5.11-5.el7.x86_64                              8/8 
+  Verifying  : 1:findutils-4.5.11-6.el7.x86_64                              1/8 
+  Verifying  : 1:x86info-1.30-6.el7.x86_64                                  2/8 
+  Verifying  : cpuid-20170122-6.el7.x86_64                                  3/8 
+  Verifying  : 1:dmidecode-3.1-2.el7.x86_64                                 4/8 
+  Verifying  : pciutils-libs-3.5.1-3.el7.x86_64                             5/8 
+  Verifying  : procps-ng-3.3.10-23.el7.x86_64                               6/8 
+  Verifying  : 1:findutils-4.5.11-5.el7.x86_64                              7/8 
+  Verifying  : procps-ng-3.3.10-10.el7.x86_64                               8/8 
+
+Installed:
+  cpuid.x86_64 0:20170122-6.el7           dmidecode.x86_64 1:3.1-2.el7          
+  x86info.x86_64 1:1.30-6.el7            
+
+Dependency Installed:
+  pciutils-libs.x86_64 0:3.5.1-3.el7                                            
+
+Updated:
+  findutils.x86_64 1:4.5.11-6.el7        procps-ng.x86_64 0:3.3.10-23.el7       
+
+Complete!
+Failed to set locale, defaulting to C
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: repos-va.psychz.net
+ * epel: mirror.cogentco.com
+ * extras: repos-va.psychz.net
+ * updates: repos-va.psychz.net
+Package 1:make-3.82-23.el7.x86_64 already installed and latest version
+Package automake-1.13.4-3.el7.noarch already installed and latest version
+Package autoconf-2.69-11.el7.noarch already installed and latest version
+Package zip-3.0-11.el7.x86_64 already installed and latest version
+Resolving Dependencies
+--> Running transaction check
+---> Package binutils.x86_64 0:2.25.1-22.base.el7 will be updated
+---> Package binutils.x86_64 0:2.27-34.base.el7 will be an update
+---> Package kernel-devel.x86_64 0:3.10.0-957.5.1.el7 will be installed
+---> Package libtool.x86_64 0:2.4.2-22.el7_3 will be installed
+---> Package swig.x86_64 0:2.0.10-5.el7 will be installed
+---> Package unzip.x86_64 0:6.0-16.el7 will be updated
+---> Package unzip.x86_64 0:6.0-19.el7 will be an update
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package            Arch         Version                    Repository     Size
+================================================================================
+Installing:
+ kernel-devel       x86_64       3.10.0-957.5.1.el7         updates        17 M
+ libtool            x86_64       2.4.2-22.el7_3             base          588 k
+ swig               x86_64       2.0.10-5.el7               base          1.3 M
+Updating:
+ binutils           x86_64       2.27-34.base.el7           base          5.9 M
+ unzip              x86_64       6.0-19.el7                 base          170 k
+
+Transaction Summary
+================================================================================
+Install  3 Packages
+Upgrade  2 Packages
+
+Total download size: 25 M
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+--------------------------------------------------------------------------------
+Total                                               38 MB/s |  25 MB  00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : unzip-6.0-19.el7.x86_64                                      1/7 
+  Installing : libtool-2.4.2-22.el7_3.x86_64                                2/7 
+install-info: No such file or directory for /usr/share/info/libtool.info.gz
+  Installing : swig-2.0.10-5.el7.x86_64                                     3/7 
+  Updating   : binutils-2.27-34.base.el7.x86_64                             4/7 
+install-info: No such file or directory for /usr/share/info/as.info.gz
+install-info: No such file or directory for /usr/share/info/binutils.info.gz
+install-info: No such file or directory for /usr/share/info/gprof.info.gz
+install-info: No such file or directory for /usr/share/info/ld.info.gz
+install-info: No such file or directory for /usr/share/info/standards.info.gz
+  Installing : kernel-devel-3.10.0-957.5.1.el7.x86_64                       5/7 
+  Cleanup    : unzip-6.0-16.el7.x86_64                                      6/7 
+  Cleanup    : binutils-2.25.1-22.base.el7.x86_64                           7/7 
+  Verifying  : kernel-devel-3.10.0-957.5.1.el7.x86_64                       1/7 
+  Verifying  : binutils-2.27-34.base.el7.x86_64                             2/7 
+  Verifying  : swig-2.0.10-5.el7.x86_64                                     3/7 
+  Verifying  : libtool-2.4.2-22.el7_3.x86_64                                4/7 
+  Verifying  : unzip-6.0-19.el7.x86_64                                      5/7 
+  Verifying  : binutils-2.25.1-22.base.el7.x86_64                           6/7 
+  Verifying  : unzip-6.0-16.el7.x86_64                                      7/7 
+
+Installed:
+  kernel-devel.x86_64 0:3.10.0-957.5.1.el7    libtool.x86_64 0:2.4.2-22.el7_3   
+  swig.x86_64 0:2.0.10-5.el7                 
+
+Updated:
+  binutils.x86_64 0:2.27-34.base.el7          unzip.x86_64 0:6.0-19.el7         
+
+Complete!
+Failed to set locale, defaulting to C
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: repos-va.psychz.net
+ * epel: mirror.cogentco.com
+ * extras: repos-va.psychz.net
+ * updates: repos-va.psychz.net
+Resolving Dependencies
+--> Running transaction check
+---> Package freetype-devel.x86_64 0:2.4.11-12.el7 will be updated
+---> Package freetype-devel.x86_64 0:2.8-12.el7_6.1 will be an update
+--> Processing Dependency: freetype = 2.8-12.el7_6.1 for package: freetype-devel-2.8-12.el7_6.1.x86_64
+---> Package giflib-devel.x86_64 0:4.1.6-9.el7 will be installed
+--> Processing Dependency: giflib = 4.1.6-9.el7 for package: giflib-devel-4.1.6-9.el7.x86_64
+--> Processing Dependency: libungif.so.4()(64bit) for package: giflib-devel-4.1.6-9.el7.x86_64
+--> Processing Dependency: libgif.so.4()(64bit) for package: giflib-devel-4.1.6-9.el7.x86_64
+---> Package libpng12-devel.x86_64 0:1.2.50-10.el7 will be installed
+--> Processing Dependency: libpng12(x86-64) = 1.2.50-10.el7 for package: libpng12-devel-1.2.50-10.el7.x86_64
+--> Processing Dependency: libpng12.so.0()(64bit) for package: libpng12-devel-1.2.50-10.el7.x86_64
+---> Package zeromq3-devel.x86_64 0:3.2.5-1.el7 will be installed
+--> Processing Dependency: zeromq3(x86-64) = 3.2.5-1.el7 for package: zeromq3-devel-3.2.5-1.el7.x86_64
+--> Processing Dependency: libzmq.so.3()(64bit) for package: zeromq3-devel-3.2.5-1.el7.x86_64
+---> Package zlib-devel.x86_64 0:1.2.7-17.el7 will be updated
+---> Package zlib-devel.x86_64 0:1.2.7-18.el7 will be an update
+--> Processing Dependency: zlib = 1.2.7-18.el7 for package: zlib-devel-1.2.7-18.el7.x86_64
+--> Running transaction check
+---> Package freetype.x86_64 0:2.4.11-12.el7 will be updated
+---> Package freetype.x86_64 0:2.8-12.el7_6.1 will be an update
+---> Package giflib.x86_64 0:4.1.6-9.el7 will be installed
+---> Package libpng12.x86_64 0:1.2.50-10.el7 will be installed
+---> Package zeromq3.x86_64 0:3.2.5-1.el7 will be installed
+--> Processing Dependency: libpgm-5.2.so.0()(64bit) for package: zeromq3-3.2.5-1.el7.x86_64
+---> Package zlib.x86_64 0:1.2.7-17.el7 will be updated
+---> Package zlib.x86_64 0:1.2.7-18.el7 will be an update
+--> Running transaction check
+---> Package openpgm.x86_64 0:5.2.122-2.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package               Arch          Version               Repository      Size
+================================================================================
+Installing:
+ giflib-devel          x86_64        4.1.6-9.el7           base            85 k
+ libpng12-devel        x86_64        1.2.50-10.el7         base           111 k
+ zeromq3-devel         x86_64        3.2.5-1.el7           epel            94 k
+Updating:
+ freetype-devel        x86_64        2.8-12.el7_6.1        updates        447 k
+ zlib-devel            x86_64        1.2.7-18.el7          base            50 k
+Installing for dependencies:
+ giflib                x86_64        4.1.6-9.el7           base            40 k
+ libpng12              x86_64        1.2.50-10.el7         base           171 k
+ openpgm               x86_64        5.2.122-2.el7         epel           171 k
+ zeromq3               x86_64        3.2.5-1.el7           epel           344 k
+Updating for dependencies:
+ freetype              x86_64        2.8-12.el7_6.1        updates        380 k
+ zlib                  x86_64        1.2.7-18.el7          base            90 k
+
+Transaction Summary
+================================================================================
+Install  3 Packages (+4 Dependent packages)
+Upgrade  2 Packages (+2 Dependent packages)
+
+Total download size: 1.9 M
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+warning: /var/cache/yum/x86_64/7/epel/packages/openpgm-5.2.122-2.el7.x86_64.rpm: Header V3 RSA/SHA256 Signature, key ID 352c64e5: NOKEY
+Public key for openpgm-5.2.122-2.el7.x86_64.rpm is not installed
+--------------------------------------------------------------------------------
+Total                                              2.1 MB/s | 1.9 MB  00:00     
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+Importing GPG key 0x352C64E5:
+ Userid     : "Fedora EPEL (7) <epel@fedoraproject.org>"
+ Fingerprint: 91e9 7d7c 4a5e 96f1 7f3e 888f 6a2f aea2 352c 64e5
+ Package    : epel-release-7-11.noarch (@extras)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : zlib-1.2.7-18.el7.x86_64                                    1/15 
+  Updating   : zlib-devel-1.2.7-18.el7.x86_64                              2/15 
+  Installing : libpng12-1.2.50-10.el7.x86_64                               3/15 
+  Updating   : freetype-2.8-12.el7_6.1.x86_64                              4/15 
+  Installing : giflib-4.1.6-9.el7.x86_64                                   5/15 
+  Installing : openpgm-5.2.122-2.el7.x86_64                                6/15 
+  Installing : zeromq3-3.2.5-1.el7.x86_64                                  7/15 
+  Installing : zeromq3-devel-3.2.5-1.el7.x86_64                            8/15 
+  Installing : giflib-devel-4.1.6-9.el7.x86_64                             9/15 
+  Updating   : freetype-devel-2.8-12.el7_6.1.x86_64                       10/15 
+  Installing : libpng12-devel-1.2.50-10.el7.x86_64                        11/15 
+  Cleanup    : freetype-devel-2.4.11-12.el7.x86_64                        12/15 
+  Cleanup    : zlib-devel-1.2.7-17.el7.x86_64                             13/15 
+  Cleanup    : zlib-1.2.7-17.el7.x86_64                                   14/15 
+  Cleanup    : freetype-2.4.11-12.el7.x86_64                              15/15 
+  Verifying  : freetype-devel-2.8-12.el7_6.1.x86_64                        1/15 
+  Verifying  : libpng12-devel-1.2.50-10.el7.x86_64                         2/15 
+  Verifying  : openpgm-5.2.122-2.el7.x86_64                                3/15 
+  Verifying  : giflib-devel-4.1.6-9.el7.x86_64                             4/15 
+  Verifying  : giflib-4.1.6-9.el7.x86_64                                   5/15 
+  Verifying  : zlib-devel-1.2.7-18.el7.x86_64                              6/15 
+  Verifying  : zlib-1.2.7-18.el7.x86_64                                    7/15 
+  Verifying  : libpng12-1.2.50-10.el7.x86_64                               8/15 
+  Verifying  : zeromq3-3.2.5-1.el7.x86_64                                  9/15 
+  Verifying  : freetype-2.8-12.el7_6.1.x86_64                             10/15 
+  Verifying  : zeromq3-devel-3.2.5-1.el7.x86_64                           11/15 
+  Verifying  : zlib-devel-1.2.7-17.el7.x86_64                             12/15 
+  Verifying  : freetype-2.4.11-12.el7.x86_64                              13/15 
+  Verifying  : zlib-1.2.7-17.el7.x86_64                                   14/15 
+  Verifying  : freetype-devel-2.4.11-12.el7.x86_64                        15/15 
+
+Installed:
+  giflib-devel.x86_64 0:4.1.6-9.el7     libpng12-devel.x86_64 0:1.2.50-10.el7   
+  zeromq3-devel.x86_64 0:3.2.5-1.el7   
+
+Dependency Installed:
+  giflib.x86_64 0:4.1.6-9.el7            libpng12.x86_64 0:1.2.50-10.el7        
+  openpgm.x86_64 0:5.2.122-2.el7         zeromq3.x86_64 0:3.2.5-1.el7           
+
+Updated:
+  freetype-devel.x86_64 0:2.8-12.el7_6.1    zlib-devel.x86_64 0:1.2.7-18.el7   
+
+Dependency Updated:
+  freetype.x86_64 0:2.8-12.el7_6.1          zlib.x86_64 0:1.2.7-18.el7         
+
+Complete!
+Failed to set locale, defaulting to C
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: repos-va.psychz.net
+ * epel: mirror.cogentco.com
+ * extras: repos-va.psychz.net
+ * updates: repos-va.psychz.net
+Package libxml2-2.9.1-6.el7_2.3.x86_64 already installed and latest version
+Package libxml2-devel-2.9.1-6.el7_2.3.x86_64 already installed and latest version
+Package libxslt-1.1.28-5.el7.x86_64 already installed and latest version
+Package libxslt-devel-1.1.28-5.el7.x86_64 already installed and latest version
+Resolving Dependencies
+--> Running transaction check
+---> Package gzip.x86_64 0:1.5-8.el7 will be updated
+---> Package gzip.x86_64 0:1.5-10.el7 will be an update
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package         Arch              Version                Repository       Size
+================================================================================
+Updating:
+ gzip            x86_64            1.5-10.el7             base            130 k
+
+Transaction Summary
+================================================================================
+Upgrade  1 Package
+
+Total download size: 130 k
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : gzip-1.5-10.el7.x86_64                                       1/2 
+  Cleanup    : gzip-1.5-8.el7.x86_64                                        2/2 
+  Verifying  : gzip-1.5-10.el7.x86_64                                       1/2 
+  Verifying  : gzip-1.5-8.el7.x86_64                                        2/2 
+
+Updated:
+  gzip.x86_64 0:1.5-10.el7                                                      
+
+Complete!
+Failed to set locale, defaulting to C
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: repos-va.psychz.net
+ * epel: mirror.cogentco.com
+ * extras: repos-va.psychz.net
+ * updates: repos-va.psychz.net
+Resolving Dependencies
+--> Running transaction check
+---> Package cmake.x86_64 0:2.8.12.2-2.el7 will be installed
+---> Package file.x86_64 0:5.11-35.el7 will be installed
+--> Processing Dependency: file-libs = 5.11-35.el7 for package: file-5.11-35.el7.x86_64
+---> Package gdb.x86_64 0:7.6.1-94.el7 will be updated
+---> Package gdb.x86_64 0:7.6.1-114.el7 will be an update
+---> Package java-1.8.0-openjdk.x86_64 1:1.8.0.191.b12-1.el7_6 will be installed
+--> Processing Dependency: xorg-x11-fonts-Type1 for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libasound.so.2(ALSA_0.9.0rc4)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libasound.so.2(ALSA_0.9)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libasound.so.2()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libXtst.so.6()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libXrender.so.1()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libXi.so.6()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libXcomposite.so.1()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+---> Package java-1.8.0-openjdk-devel.x86_64 1:1.8.0.191.b12-1.el7_6 will be installed
+---> Package patch.x86_64 0:2.7.1-8.el7 will be updated
+---> Package patch.x86_64 0:2.7.1-10.el7_5 will be an update
+---> Package pciutils.x86_64 0:3.5.1-3.el7 will be installed
+--> Processing Dependency: hwdata for package: pciutils-3.5.1-3.el7.x86_64
+--> Running transaction check
+---> Package alsa-lib.x86_64 0:1.1.6-2.el7 will be installed
+---> Package file-libs.x86_64 0:5.11-33.el7 will be updated
+---> Package file-libs.x86_64 0:5.11-35.el7 will be an update
+---> Package hwdata.x86_64 0:0.252-9.1.el7 will be installed
+---> Package libXcomposite.x86_64 0:0.4.4-4.1.el7 will be installed
+---> Package libXi.x86_64 0:1.7.9-1.el7 will be installed
+---> Package libXrender.x86_64 0:0.9.10-1.el7 will be installed
+---> Package libXtst.x86_64 0:1.2.3-1.el7 will be installed
+---> Package xorg-x11-fonts-Type1.noarch 0:7.5-9.el7 will be installed
+--> Processing Dependency: ttmkfdir for package: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> Processing Dependency: ttmkfdir for package: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> Processing Dependency: mkfontdir for package: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> Processing Dependency: mkfontdir for package: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> Running transaction check
+---> Package ttmkfdir.x86_64 0:3.0.9-42.el7 will be installed
+---> Package xorg-x11-font-utils.x86_64 1:7.5-21.el7 will be installed
+--> Processing Dependency: libfontenc.so.1()(64bit) for package: 1:xorg-x11-font-utils-7.5-21.el7.x86_64
+--> Running transaction check
+---> Package libfontenc.x86_64 0:1.1.3-3.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                    Arch     Version                    Repository
+                                                                           Size
+================================================================================
+Installing:
+ cmake                      x86_64   2.8.12.2-2.el7             base      7.1 M
+ file                       x86_64   5.11-35.el7                base       57 k
+ java-1.8.0-openjdk         x86_64   1:1.8.0.191.b12-1.el7_6    updates   254 k
+ java-1.8.0-openjdk-devel   x86_64   1:1.8.0.191.b12-1.el7_6    updates   9.8 M
+ pciutils                   x86_64   3.5.1-3.el7                base       93 k
+Updating:
+ gdb                        x86_64   7.6.1-114.el7              base      2.4 M
+ patch                      x86_64   2.7.1-10.el7_5             base      110 k
+Installing for dependencies:
+ alsa-lib                   x86_64   1.1.6-2.el7                base      424 k
+ hwdata                     x86_64   0.252-9.1.el7              base      2.3 M
+ libXcomposite              x86_64   0.4.4-4.1.el7              base       22 k
+ libXi                      x86_64   1.7.9-1.el7                base       40 k
+ libXrender                 x86_64   0.9.10-1.el7               base       26 k
+ libXtst                    x86_64   1.2.3-1.el7                base       20 k
+ libfontenc                 x86_64   1.1.3-3.el7                base       31 k
+ ttmkfdir                   x86_64   3.0.9-42.el7               base       48 k
+ xorg-x11-font-utils        x86_64   1:7.5-21.el7               base      104 k
+ xorg-x11-fonts-Type1       noarch   7.5-9.el7                  base      521 k
+Updating for dependencies:
+ file-libs                  x86_64   5.11-35.el7                base      340 k
+
+Transaction Summary
+================================================================================
+Install  5 Packages (+10 Dependent packages)
+Upgrade  2 Packages (+ 1 Dependent package)
+
+Total download size: 24 M
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+--------------------------------------------------------------------------------
+Total                                               20 MB/s |  24 MB  00:01     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : libXi-1.7.9-1.el7.x86_64                                    1/21 
+  Installing : libXtst-1.2.3-1.el7.x86_64                                  2/21 
+  Installing : libfontenc-1.1.3-3.el7.x86_64                               3/21 
+  Installing : 1:xorg-x11-font-utils-7.5-21.el7.x86_64                     4/21 
+  Installing : libXcomposite-0.4.4-4.1.el7.x86_64                          5/21 
+  Installing : alsa-lib-1.1.6-2.el7.x86_64                                 6/21 
+  Updating   : file-libs-5.11-35.el7.x86_64                                7/21 
+  Installing : libXrender-0.9.10-1.el7.x86_64                              8/21 
+  Installing : ttmkfdir-3.0.9-42.el7.x86_64                                9/21 
+  Installing : xorg-x11-fonts-Type1-7.5-9.el7.noarch                      10/21 
+  Installing : 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64          11/21 
+  Installing : hwdata-0.252-9.1.el7.x86_64                                12/21 
+  Installing : pciutils-3.5.1-3.el7.x86_64                                13/21 
+  Installing : 1:java-1.8.0-openjdk-devel-1.8.0.191.b12-1.el7_6.x86_64    14/21 
+  Installing : file-5.11-35.el7.x86_64                                    15/21 
+  Updating   : gdb-7.6.1-114.el7.x86_64                                   16/21 
+  Updating   : patch-2.7.1-10.el7_5.x86_64                                17/21 
+  Installing : cmake-2.8.12.2-2.el7.x86_64                                18/21 
+  Cleanup    : gdb-7.6.1-94.el7.x86_64                                    19/21 
+  Cleanup    : patch-2.7.1-8.el7.x86_64                                   20/21 
+  Cleanup    : file-libs-5.11-33.el7.x86_64                               21/21 
+  Verifying  : hwdata-0.252-9.1.el7.x86_64                                 1/21 
+  Verifying  : file-5.11-35.el7.x86_64                                     2/21 
+  Verifying  : ttmkfdir-3.0.9-42.el7.x86_64                                3/21 
+  Verifying  : 1:java-1.8.0-openjdk-devel-1.8.0.191.b12-1.el7_6.x86_64     4/21 
+  Verifying  : xorg-x11-fonts-Type1-7.5-9.el7.noarch                       5/21 
+  Verifying  : libXrender-0.9.10-1.el7.x86_64                              6/21 
+  Verifying  : cmake-2.8.12.2-2.el7.x86_64                                 7/21 
+  Verifying  : file-libs-5.11-35.el7.x86_64                                8/21 
+  Verifying  : alsa-lib-1.1.6-2.el7.x86_64                                 9/21 
+  Verifying  : libXcomposite-0.4.4-4.1.el7.x86_64                         10/21 
+  Verifying  : libXi-1.7.9-1.el7.x86_64                                   11/21 
+  Verifying  : libXtst-1.2.3-1.el7.x86_64                                 12/21 
+  Verifying  : patch-2.7.1-10.el7_5.x86_64                                13/21 
+  Verifying  : 1:xorg-x11-font-utils-7.5-21.el7.x86_64                    14/21 
+  Verifying  : gdb-7.6.1-114.el7.x86_64                                   15/21 
+  Verifying  : libfontenc-1.1.3-3.el7.x86_64                              16/21 
+  Verifying  : 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64          17/21 
+  Verifying  : pciutils-3.5.1-3.el7.x86_64                                18/21 
+  Verifying  : gdb-7.6.1-94.el7.x86_64                                    19/21 
+  Verifying  : file-libs-5.11-33.el7.x86_64                               20/21 
+  Verifying  : patch-2.7.1-8.el7.x86_64                                   21/21 
+
+Installed:
+  cmake.x86_64 0:2.8.12.2-2.el7                                                 
+  file.x86_64 0:5.11-35.el7                                                     
+  java-1.8.0-openjdk.x86_64 1:1.8.0.191.b12-1.el7_6                             
+  java-1.8.0-openjdk-devel.x86_64 1:1.8.0.191.b12-1.el7_6                       
+  pciutils.x86_64 0:3.5.1-3.el7                                                 
+
+Dependency Installed:
+  alsa-lib.x86_64 0:1.1.6-2.el7                                                 
+  hwdata.x86_64 0:0.252-9.1.el7                                                 
+  libXcomposite.x86_64 0:0.4.4-4.1.el7                                          
+  libXi.x86_64 0:1.7.9-1.el7                                                    
+  libXrender.x86_64 0:0.9.10-1.el7                                              
+  libXtst.x86_64 0:1.2.3-1.el7                                                  
+  libfontenc.x86_64 0:1.1.3-3.el7                                               
+  ttmkfdir.x86_64 0:3.0.9-42.el7                                                
+  xorg-x11-font-utils.x86_64 1:7.5-21.el7                                       
+  xorg-x11-fonts-Type1.noarch 0:7.5-9.el7                                       
+
+Updated:
+  gdb.x86_64 0:7.6.1-114.el7            patch.x86_64 0:2.7.1-10.el7_5           
+
+Dependency Updated:
+  file-libs.x86_64 0:5.11-35.el7                                                
+
+Complete!
+-----IMAGE_TEST--------
+which_python=/opt/rh/rh-python36/root/usr/bin/python
+link_which_python=/opt/rh/rh-python36/root/usr/bin/python->python3
+link_bin_python=/usr/bin/python->python2
+which_pip=/opt/rh/rh-python36/root/usr/bin/pip
+which_pip_site=/opt/rh/rh-python36/root/usr/lib/python3.6/site-packages
+link_which_pip=/opt/rh/rh-python36/root/usr/bin/pip
+PATH=/opt/rh/rh-python36/root/usr/bin:/home/default/.local/bin:/usr/local/bin:/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PYTHON_VERSION=3.6
+LD_LIBRARY_PATH=/usr/local/lib;
+PYTHON_LIB_PATH=/usr/lib64/python3.6/site-packages
+-----IMAGE_TEST--------
+The directory '/opt/app-root/src/.cache/pip/http' or its parent directory is not owned by the current user and the cache has been disabled. Please check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+The directory '/opt/app-root/src/.cache/pip' or its parent directory is not owned by the current user and caching wheels has been disabled. check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+Collecting pip
+  Downloading https://files.pythonhosted.org/packages/d8/f3/413bab4ff08e1fc4828dfc59996d721917df8e8583ea85385d51125dceff/pip-19.0.3-py2.py3-none-any.whl (1.4MB)
+Collecting wheel
+  Downloading https://files.pythonhosted.org/packages/96/ba/a4702cbb6a3a485239fbe9525443446203f00771af9ac000fa3ef2788201/wheel-0.33.1-py2.py3-none-any.whl
+Installing collected packages: pip, wheel
+  Found existing installation: pip 9.0.1
+    Uninstalling pip-9.0.1:
+      Successfully uninstalled pip-9.0.1
+Successfully installed pip-19.0.3 wheel-0.33.1
+-----IMAGE_TEST--------
+PYTHON_H=/opt/rh/rh-python36/root/usr/include/python3.6m/Python.h
+total 8
+drwxrwxrwx. 2 root root 4096 Mar  5 19:45 python3.6m
+total 3092
+drwxrwxrwx.  2 root root       6 Jul 27  2017 X11
+drwxrwxrwx.  2 root root       6 Jul 27  2017 games
+lrwxrwxrwx.  1 root root      32 Mar  5 19:45 libpython3.6m.so -> libpython3.6m.so.rh-python36-1.0
+-rwxrwxrwx.  1 root root 3144712 Mar 20  2018 libpython3.6m.so.rh-python36-1.0
+-rwxrwxrwx.  1 root root    6696 Mar 20  2018 libpython3.so.rh-python36
+drwxrwxrwx.  2 root root      84 Mar  5 19:45 pkgconfig
+drwxrwxrwx.  5 root root      52 Mar  5 19:45 pm-utils
+drwxrwxrwx. 33 root root    8192 Mar  5 19:45 python3.6
+drwxrwxrwx.  2 root root       6 Jul 27  2017 sse2
+drwxrwxrwx.  2 root root       6 Jul 27  2017 tls
+which_python=/opt/rh/rh-python36/root/usr/bin/python
+link_which_python=/opt/rh/rh-python36/root/usr/bin/python->python3
+link_bin_python=/usr/bin/python->/opt/rh/rh-python36/root/usr/bin/python3.6
+which_pip=/opt/rh/rh-python36/root/usr/bin/pip
+link_which_pip=/opt/rh/rh-python36/root/usr/bin/pip
+which_pip_ver=pip 19.0.3 from /opt/rh/rh-python36/root/usr/lib/python3.6/site-packages/pip (python 3.6)
+which_pip_site=/opt/rh/rh-python36/root/usr/lib/python3.6/site-packages/pip
+PATH=/opt/rh/rh-python36/root/usr/bin:/home/default/.local/bin:/usr/local/bin:/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+LD_LIBRARY_PATH=/opt/rh/rh-python36/root/usr/lib64/:/usr/local/lib:/usr/local/lib;
+PYTHON_LIB_PATH=/opt/rh/rh-python36/root/usr/lib/python3.6/site-packages
+PYTHON_VERSION=3.6
+lrwxrwxrwx. 1 root root   42 Mar  5 19:49 /usr/bin/python -> /opt/rh/rh-python36/root/usr/bin/python3.6
+lrwxrwxrwx. 1 root root    9 Dec 14  2016 /usr/bin/python2 -> python2.7
+-rwxr-xr-x. 1 root root 7136 Nov  6  2016 /usr/bin/python2.7
+-----IMAGE_TEST--------
+ ---> 2d72cfca19ea
+Removing intermediate container d424b17c73d6
+Step 41/54 : RUN wget https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini -P /tmp     && wget https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini.asc -P /tmp     && cd /tmp     &&     TINI_GPGKEY=595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7;     found='';     for server in         ha.pool.sks-keyservers.net         hkp://keyserver.ubuntu.com:80         hkp://p80.pool.sks-keyservers.net:80         pgp.mit.edu     ; do         echo "Fetching GPG key $TINI_GPGKEY from $server";         gpg --batch --keyserver "$server" --recv-keys "$TINI_GPGKEY" && found=yes && break;     done;     test -z "$found" && echo >&2 "ERROR: failed to fetch GPG key $TINI_GPGKEY" && exit 1;     gpg --batch --verify /tmp/tini.asc /tmp/tini     && mv /tmp/tini /usr/local/bin/tini     && chmod +x /usr/local/bin/tini      && chown -R 1001:1001 /opt/app-root      && chgrp -R root /opt/app-root      && chmod -R ug+rwx /opt/app-root      && echo "startup --batch" >>/etc/.bazelrc      && echo "startup --batch" >>/root/.bazelrc      && echo "build --spawn_strategy=standalone --genrule_strategy=standalone" >>/etc/.bazelrc      && echo "build --spawn_strategy=standalone --genrule_strategy=standalone" >>/root/.bazelrc
+ ---> Running in 843072e8da1d
+
+--2019-03-05 19:50:13--  https://github.com/krallin/tini/releases/download/v0.18.0/tini
+Resolving github.com (github.com)... 192.30.253.112, 192.30.253.113
+Connecting to github.com (github.com)|192.30.253.112|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://github-production-release-asset-2e65be.s3.amazonaws.com/31432573/461babf8-4548-11e8-836f-ad8740b7b1fa?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190305%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190305T195013Z&X-Amz-Expires=300&X-Amz-Signature=e1406a9f8ef1af715174769d9e35d11d675532da6df8e3b7e9f2cf11b9556941&X-Amz-SignedHeaders=host&actor_id=0&response-content-disposition=attachment%3B%20filename%3Dtini&response-content-type=application%2Foctet-stream [following]
+--2019-03-05 19:50:13--  https://github-production-release-asset-2e65be.s3.amazonaws.com/31432573/461babf8-4548-11e8-836f-ad8740b7b1fa?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190305%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190305T195013Z&X-Amz-Expires=300&X-Amz-Signature=e1406a9f8ef1af715174769d9e35d11d675532da6df8e3b7e9f2cf11b9556941&X-Amz-SignedHeaders=host&actor_id=0&response-content-disposition=attachment%3B%20filename%3Dtini&response-content-type=application%2Foctet-stream
+Resolving github-production-release-asset-2e65be.s3.amazonaws.com (github-production-release-asset-2e65be.s3.amazonaws.com)... 54.231.114.235
+Connecting to github-production-release-asset-2e65be.s3.amazonaws.com (github-production-release-asset-2e65be.s3.amazonaws.com)|54.231.114.235|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 24064 (24K) [application/octet-stream]
+Saving to: '/tmp/tini'
+
+     0K .......... .......... ...                             100% 1.84M=0.01s
+
+2019-03-05 19:50:14 (1.84 MB/s) - '/tmp/tini' saved [24064/24064]
+
+--2019-03-05 19:50:14--  https://github.com/krallin/tini/releases/download/v0.18.0/tini.asc
+Resolving github.com (github.com)... 192.30.253.112, 192.30.253.113
+Connecting to github.com (github.com)|192.30.253.112|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://github-production-release-asset-2e65be.s3.amazonaws.com/31432573/499d8ca6-4548-11e8-97e5-d85005c1c629?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190305%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190305T195014Z&X-Amz-Expires=300&X-Amz-Signature=fc8c7978533537ad49f1ce5fb84e5f3ad03c3ab61c4c9b4f1e70d558060d822f&X-Amz-SignedHeaders=host&actor_id=0&response-content-disposition=attachment%3B%20filename%3Dtini.asc&response-content-type=application%2Foctet-stream [following]
+--2019-03-05 19:50:14--  https://github-production-release-asset-2e65be.s3.amazonaws.com/31432573/499d8ca6-4548-11e8-97e5-d85005c1c629?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190305%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190305T195014Z&X-Amz-Expires=300&X-Amz-Signature=fc8c7978533537ad49f1ce5fb84e5f3ad03c3ab61c4c9b4f1e70d558060d822f&X-Amz-SignedHeaders=host&actor_id=0&response-content-disposition=attachment%3B%20filename%3Dtini.asc&response-content-type=application%2Foctet-stream
+Resolving github-production-release-asset-2e65be.s3.amazonaws.com (github-production-release-asset-2e65be.s3.amazonaws.com)... 54.231.114.235
+Connecting to github-production-release-asset-2e65be.s3.amazonaws.com (github-production-release-asset-2e65be.s3.amazonaws.com)|54.231.114.235|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 819 [application/octet-stream]
+Saving to: '/tmp/tini.asc'
+
+     0K                                                       100% 16.6M=0s
+
+2019-03-05 19:50:14 (16.6 MB/s) - '/tmp/tini.asc' saved [819/819]
+
+Fetching GPG key 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 from ha.pool.sks-keyservers.net
+gpg: directory `/opt/app-root/src/.gnupg' created
+gpg: new configuration file `/opt/app-root/src/.gnupg/gpg.conf' created
+gpg: WARNING: options in `/opt/app-root/src/.gnupg/gpg.conf' are not yet active during this run
+gpg: keyring `/opt/app-root/src/.gnupg/secring.gpg' created
+gpg: keyring `/opt/app-root/src/.gnupg/pubring.gpg' created
+gpg: requesting key 0527A9B7 from hkp server ha.pool.sks-keyservers.net
+gpg: /opt/app-root/src/.gnupg/trustdb.gpg: trustdb created
+gpg: key 7001A4E5: public key "Thomas Orozco <thomas@orozco.fr>" imported
+gpg: no ultimately trusted keys found
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+gpg: Signature made Sat Apr 21 07:42:04 2018 UTC using RSA key ID 0527A9B7
+gpg: Good signature from "Thomas Orozco <thomas@orozco.fr>"
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 6380 DC42 8747 F6C3 93FE  ACA5 9A84 159D 7001 A4E5
+     Subkey fingerprint: 595E 85A6 B1B4 779E A4DA  AEC7 0B58 8DFF 0527 A9B7
+ ---> 7a34ab3876dc
+Removing intermediate container 843072e8da1d
+Step 42/54 : RUN mkdir -p /tf 	&& if [ "$PYTHON_VERSION" = "3.5" ] ; then export LD_LIBRARY_PATH="/opt/rh/rh-python35/root/usr/lib64/:/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" ; fi 	&& if [ "$PYTHON_VERSION" = "3.6" ] ; then export LD_LIBRARY_PATH="/opt/rh/rh-python36/root/usr/lib64/:/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" ; fi 	&& echo $LD_LIBRARY_PATH     && pip install --no-cache-dir --upgrade pip     && pip install --no-cache-dir -U setuptools     && pip install --no-cache-dir enum34 futures mock numpy six pixiedust pillow pyaml keras     && mkdir -p /tf/tools     && cd /tf/tools     && wget -q https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION/bazel-$BAZEL_VERSION-installer-linux-x86_64.sh     && ls -l /tf/tools     && chmod +x bazel-$BAZEL_VERSION-installer-linux-x86_64.sh     && ./bazel-$BAZEL_VERSION-installer-linux-x86_64.sh     && bazel     && usermod -g root $NB_USER     && mkdir -p /workspace     && chown $NB_UID:root /workspace     && chmod 1777 /workspace     && mkdir -p /home/$NB_USER     && chown -R $NB_UID:root /home/$NB_USER     && chmod g+rwX,o+rX -R /home/$NB_USER
+ ---> Running in 6449e02af3e3
+
+/opt/rh/rh-python36/root/usr/lib64/:/usr/local/lib:/usr/local/lib;
+Requirement already up-to-date: pip in /opt/rh/rh-python36/root/usr/lib/python3.6/site-packages (19.0.3)
+Collecting setuptools
+  Downloading https://files.pythonhosted.org/packages/d1/6a/4b2fcefd2ea0868810e92d519dacac1ddc64a2e53ba9e3422c3b62b378a6/setuptools-40.8.0-py2.py3-none-any.whl (575kB)
+Installing collected packages: setuptools
+  Found existing installation: setuptools 36.5.0
+    Uninstalling setuptools-36.5.0:
+      Successfully uninstalled setuptools-36.5.0
+Successfully installed setuptools-40.8.0
+Collecting enum34
+  Downloading https://files.pythonhosted.org/packages/af/42/cb9355df32c69b553e72a2e28daee25d1611d2c0d9c272aa1d34204205b2/enum34-1.1.6-py3-none-any.whl
+Collecting futures
+  Downloading https://files.pythonhosted.org/packages/cc/26/b61e3a4eb50653e8a7339d84eeaa46d1e93b92951978873c220ae64d0733/futures-3.1.1.tar.gz
+Collecting mock
+  Downloading https://files.pythonhosted.org/packages/e6/35/f187bdf23be87092bd0f1200d43d23076cee4d0dec109f195173fd3ebc79/mock-2.0.0-py2.py3-none-any.whl (56kB)
+Collecting numpy
+  Downloading https://files.pythonhosted.org/packages/35/d5/4f8410ac303e690144f0a0603c4b8fd3b986feb2749c435f7cdbb288f17e/numpy-1.16.2-cp36-cp36m-manylinux1_x86_64.whl (17.3MB)
+Collecting six
+  Downloading https://files.pythonhosted.org/packages/73/fb/00a976f728d0d1fecfe898238ce23f502a721c0ac0ecfedb80e0d88c64e9/six-1.12.0-py2.py3-none-any.whl
+Collecting pixiedust
+  Downloading https://files.pythonhosted.org/packages/7c/01/d2084c07fdc05aafeaecff74f5888280c55193cd16c3572bbcee12bbc008/pixiedust-1.1.15.tar.gz (197kB)
+Collecting pillow
+  Downloading https://files.pythonhosted.org/packages/85/5e/e91792f198bbc5a0d7d3055ad552bc4062942d27eaf75c3e2783cf64eae5/Pillow-5.4.1-cp36-cp36m-manylinux1_x86_64.whl (2.0MB)
+Collecting pyaml
+  Downloading https://files.pythonhosted.org/packages/c5/e1/1523fb1dab744e2c6b1f02446f2139a78726c18c062a8ddd53875abb20f8/pyaml-18.11.0-py2.py3-none-any.whl
+Collecting keras
+  Downloading https://files.pythonhosted.org/packages/5e/10/aa32dad071ce52b5502266b5c659451cfd6ffcbf14e6c8c4f16c0ff5aaab/Keras-2.2.4-py2.py3-none-any.whl (312kB)
+Collecting pbr>=0.11 (from mock)
+  Downloading https://files.pythonhosted.org/packages/14/09/12fe9a14237a6b7e0ba3a8d6fcf254bf4b10ec56a0185f73d651145e9222/pbr-5.1.3-py2.py3-none-any.whl (107kB)
+Collecting mpld3 (from pixiedust)
+  Downloading https://files.pythonhosted.org/packages/91/95/a52d3a83d0a29ba0d6898f6727e9858fe7a43f6c2ce81a5fe7e05f0f4912/mpld3-0.3.tar.gz (788kB)
+Collecting lxml (from pixiedust)
+  Downloading https://files.pythonhosted.org/packages/79/ae/35f5dbbac8efec8b8d1300858f1ce0b453ea2ff644abe6b5c5c358013dfa/lxml-4.3.2-cp36-cp36m-manylinux1_x86_64.whl (5.7MB)
+Collecting geojson (from pixiedust)
+  Downloading https://files.pythonhosted.org/packages/f1/34/bc3a65faabce27a7faa755ab08d811207a4fc438f77ef09c229fc022d778/geojson-2.4.1-py2.py3-none-any.whl
+Collecting astunparse (from pixiedust)
+  Downloading https://files.pythonhosted.org/packages/2e/37/5dd0dd89b87bb5f0f32a7e775458412c52d78f230ab8d0c65df6aabc4479/astunparse-1.6.2-py2.py3-none-any.whl
+Collecting markdown (from pixiedust)
+  Downloading https://files.pythonhosted.org/packages/7a/6b/5600647404ba15545ec37d2f7f58844d690baf2f81f3a60b862e48f29287/Markdown-3.0.1-py2.py3-none-any.whl (89kB)
+Collecting colour (from pixiedust)
+  Downloading https://files.pythonhosted.org/packages/74/46/e81907704ab203206769dee1385dc77e1407576ff8f50a0681d0a6b541be/colour-0.1.5-py2.py3-none-any.whl
+Collecting requests (from pixiedust)
+  Downloading https://files.pythonhosted.org/packages/7d/e3/20f3d364d6c8e5d2353c72a67778eb189176f08e873c9900e10c0287b84b/requests-2.21.0-py2.py3-none-any.whl (57kB)
+Collecting PyYAML (from pyaml)
+  Downloading https://files.pythonhosted.org/packages/9e/a3/1d13970c3f36777c583f136c136f804d70f500168edc1edea6daa7200769/PyYAML-3.13.tar.gz (270kB)
+Collecting keras-applications>=1.0.6 (from keras)
+  Downloading https://files.pythonhosted.org/packages/90/85/64c82949765cfb246bbdaf5aca2d55f400f792655927a017710a78445def/Keras_Applications-1.0.7-py2.py3-none-any.whl (51kB)
+Collecting scipy>=0.14 (from keras)
+  Downloading https://files.pythonhosted.org/packages/7f/5f/c48860704092933bf1c4c1574a8de1ffd16bf4fde8bab190d747598844b2/scipy-1.2.1-cp36-cp36m-manylinux1_x86_64.whl (24.8MB)
+Collecting h5py (from keras)
+  Downloading https://files.pythonhosted.org/packages/30/99/d7d4fbf2d02bb30fb76179911a250074b55b852d34e98dd452a9f394ac06/h5py-2.9.0-cp36-cp36m-manylinux1_x86_64.whl (2.8MB)
+Collecting keras-preprocessing>=1.0.5 (from keras)
+  Downloading https://files.pythonhosted.org/packages/c0/bf/0315ef6a9fd3fc2346e85b0ff1f5f83ca17073f2c31ac719ab2e4da0d4a3/Keras_Preprocessing-1.0.9-py2.py3-none-any.whl (59kB)
+Requirement already satisfied: wheel<1.0,>=0.23.0 in /opt/rh/rh-python36/root/usr/lib/python3.6/site-packages (from astunparse->pixiedust) (0.33.1)
+Collecting urllib3<1.25,>=1.21.1 (from requests->pixiedust)
+  Downloading https://files.pythonhosted.org/packages/62/00/ee1d7de624db8ba7090d1226aebefab96a2c71cd5cfa7629d6ad3f61b79e/urllib3-1.24.1-py2.py3-none-any.whl (118kB)
+Collecting certifi>=2017.4.17 (from requests->pixiedust)
+  Downloading https://files.pythonhosted.org/packages/9f/e0/accfc1b56b57e9750eba272e24c4dddeac86852c2bebd1236674d7887e8a/certifi-2018.11.29-py2.py3-none-any.whl (154kB)
+Collecting chardet<3.1.0,>=3.0.2 (from requests->pixiedust)
+  Downloading https://files.pythonhosted.org/packages/bc/a9/01ffebfb562e4274b6487b4bb1ddec7ca55ec7510b22e4c51f14098443b8/chardet-3.0.4-py2.py3-none-any.whl (133kB)
+Collecting idna<2.9,>=2.5 (from requests->pixiedust)
+  Downloading https://files.pythonhosted.org/packages/14/2c/cd551d81dbe15200be1cf41cd03869a46fe7226e7450af7a6545bfc474c9/idna-2.8-py2.py3-none-any.whl (58kB)
+Installing collected packages: enum34, futures, six, pbr, mock, numpy, mpld3, lxml, geojson, astunparse, markdown, colour, urllib3, certifi, chardet, idna, requests, pixiedust, pillow, PyYAML, pyaml, h5py, keras-applications, scipy, keras-preprocessing, keras
+  Running setup.py install for futures: started
+    Running setup.py install for futures: finished with status 'done'
+  Running setup.py install for mpld3: started
+    Running setup.py install for mpld3: finished with status 'done'
+  Running setup.py install for pixiedust: started
+    Running setup.py install for pixiedust: finished with status 'done'
+  Running setup.py install for PyYAML: started
+    Running setup.py install for PyYAML: finished with status 'done'
+Successfully installed PyYAML-3.13 astunparse-1.6.2 certifi-2018.11.29 chardet-3.0.4 colour-0.1.5 enum34-1.1.6 futures-3.1.1 geojson-2.4.1 h5py-2.9.0 idna-2.8 keras-2.2.4 keras-applications-1.0.7 keras-preprocessing-1.0.9 lxml-4.3.2 markdown-3.0.1 mock-2.0.0 mpld3-0.3 numpy-1.16.2 pbr-5.1.3 pillow-5.4.1 pixiedust-1.1.15 pyaml-18.11.0 requests-2.21.0 scipy-1.2.1 six-1.12.0 urllib3-1.24.1
+total 166852
+-rw-r--r--. 1 root root 170853024 Nov 30 14:53 bazel-0.20.0-installer-linux-x86_64.sh
+Bazel installer
+---------------
+
+Bazel is bundled with software licensed under the GPLv2 with Classpath exception.
+You can find the sources next to the installer on our release page:
+   https://github.com/bazelbuild/bazel/releases
+
+# Release 0.20.0 (2018-11-30)
+
+Baseline: 7bf7f031c332dc483257248d1c1f98ad75bbc83b
+
+Cherry picks:
+
+   + fd52341505e725487c6bc6dfbe6b5e081aa037da:
+     update bazel-toolchains pin to latest release Part of changes to
+     allow bazelci to use 0.19.0 configs. RBE toolchain configs at or
+     before 0.17.0 are not compatible with bazel 0.19.0 or above.
+   + 241f28d05424db2d11ee245dc856b992258505e3:
+     Revert "Toggle --incompatible_disable_late_bound_option_defaults
+     flag."
+   + f7e5aef145c33968f658eb2260e25630dc41cc67:
+     Add cc_toolchain targets for the new entries in the default
+     cc_toolchain_suite.
+   + d2920e32ec7f3f8551a693d33c17b19f1b802145:
+     Revert "WindowsFileSystem: open files with delete-sharing"
+
+[Breaking changes in 0.20](https://github.com/bazelbuild/bazel/issues?q=is%3Aissue+label%3Abreaking-change-0.20)
+
+  - [--incompatible_remove_native_http_archive](https://github.com/bazelbuild/bazel/issues/6570).
+  - [--incompatible_remove_native_git_repository](https://github.com/bazelbuild/bazel/issues/6569).
+  - [--incompatible_disable_cc_toolchain_label_from_crosstool_proto](https://github.com/bazelbuild/bazel/issues/6434).
+  - [--incompatible_disable_depset_in_cc_user_flags](https://github.com/bazelbuild/bazel/issues/6384).
+  - [--incompatible_disable_cc_configuration_make_variables](https://github.com/bazelbuild/bazel/issues/6381).
+  - [--incompatible_disallow_conflicting_providers](https://github.com/bazelbuild/bazel/issues/5902).
+  - [--incompatible_range_type](https://github.com/bazelbuild/bazel/issues/5264).
+
+[0.20 is a migration window for the following changes](https://github.com/bazelbuild/bazel/issues?q=is%3Aissue+label%3Amigration-0.20)
+
+  - [--incompatible_use_jdk10_as_host_javabase](https://github.com/bazelbuild/bazel/issues/6661)
+  - [--incompatible_use_remotejdk_as_host_javabase](https://github.com/bazelbuild/bazel/issues/6656)
+  - [--incompatible_disable_sysroot_from_configuration](https://github.com/bazelbuild/bazel/issues/6565)
+  - [--incompatible_provide_cc_toolchain_info_from_cc_toolchain_suite](https://github.com/bazelbuild/bazel/issues/6537)
+  - [--incompatible_disable_depset_in_cc_user_flags](https://github.com/bazelbuild/bazel/issues/6383)
+  - [--incompatible_package_name_is_a_function](https://github.com/bazelbuild/bazel/issues/5827)
+
+[Breaking changes in the next release (0.21)](https://github.com/bazelbuild/bazel/issues?q=is%3Aissue+label%3Abreaking-change-0.21)
+
+  - [--incompatible_use_jdk10_as_host_javabase](https://github.com/bazelbuild/bazel/issues/6661)
+  - [--incompatible_use_remotejdk_as_host_javabase](https://github.com/bazelbuild/bazel/issues/6656)
+  - [--incompatible_disable_sysroot_from_configuration](https://github.com/bazelbuild/bazel/issues/6565)
+  - [--incompatible_provide_cc_toolchain_info_from_cc_toolchain_suite](https://github.com/bazelbuild/bazel/issues/6537)
+  - [--incompatible_disable_depset_in_cc_user_flags](https://github.com/bazelbuild/bazel/issues/6383)
+  - [--incompatible_disallow_data_transition](https://github.com/bazelbuild/bazel/issues/6153)
+  - [--incompatible_package_name_is_a_function](https://github.com/bazelbuild/bazel/issues/5827)
+  - [--incompatible_disallow_slash_operator](https://github.com/bazelbuild/bazel/issues/5823)
+  - [--incompatible_static_name_resolution](https://github.com/bazelbuild/bazel/issues/5637)
+
+Incompatible changes:
+
+  - the --experimental_no_dotd_scanning_with_modules command line
+    argument is not supported anymore.
+  - The --prune_cpp_modules command line option is not supported
+    anymore.
+  - the --experimental_prune_cpp_input_discovery command line option
+    is not supported anymore.
+
+New features:
+
+  - Added support for Android NDK r18.
+
+Important changes:
+
+  - The 'default' parameter of attr.output and attr.output_list is
+    removed. This is controlled by
+    --incompatible_no_output_attr_default
+  - A number of platform-related Starlark APIs which were previously
+    marked "experimental" are now disabled by default, and may be
+    enabled via --experimental_platforms_api
+  - Make legacy-test-support ("legacy_test-<api-level>") from
+    android_sdk_repository neverlink. The legacy test support
+    libraries shouldn't be built into test binaries. To make them
+    available at runtime, developers should declare them via
+    uses-library:
+    https://developer.android.com/training/testing/set-up-project#andr
+    oid-test-base
+  - query remote server Capabilities (per REAPI v2)
+  - CppRules: All cc_toolchains depended on from
+    cc_toolchain_suite.toolchains are now analyzed when not using
+    platforms in order to select the right cc_toolchain.
+  - removed obsolete --explicit_jre_deps flag.
+  - Incompatible flag
+    --incompatible_disable_legacy_cpp_toolchain_skylark_api was
+    flipped.
+  - Improve error messaging when unsupport proguard options are
+    specified at the library level.
+  - Incompatible flag
+    --incompatible_disable_legacy_cpp_toolchain_skylark_api was
+    flipped.
+  - Incompatible flag
+    --incompatible_disable_legacy_cpp_toolchain_skylark_api was
+    flipped.
+  - The --incompatible_disable_late_bound_option_defaults flag has
+    been flipped (#6384)
+  - Incompatible flag
+    --incompatible_disable_legacy_flags_cc_toolchain_api was flipped
+    (#6434)
+  - Fixed issue where ctx.resolve_command created conflicting
+    intermediate files when resolve_command was called multiple times
+    within the same rule invocation with a long command attribute.
+  - Incompatible flag
+    --incompatible_disable_cc_configuration_make_variables was
+    flipped (#6381)
+  - If the --javabase flag is unset, it Bazel locates a JDK using
+    the JAVA_HOME environment variable and searching the PATH. If no
+    JDK is found --javabase will be empty, and builds targeting Java
+    will not
+    be supported. Previously Bazel would fall back to using the
+    embedded
+    JDK as a --javabase, but this is no longer default behaviour. A
+    JDK should
+    be explicitly installed instead to enable Java development
+  - Bazel will now shut down when idle for 5 minutes and the system
+    is low on RAM (linux only).
+  - CROSSTOOL file is now read from the package of cc_toolchain, not
+    from
+    the package of cc_toolchain_suite. This is not expected to break
+    anybody since
+    cc_toolchain_suite and cc_toolchain are commonly in the same
+    package.
+  - All overrides of Starlark's ctx.new_file function are now
+    deprecated.
+      Try the `--incompatible_new_actions_api` flag to ensure your
+    code is forward-compatible.
+  - --incompatible_disable_cc_toolchain_label_from_crosstool_proto
+    was flipped.
+  - Introduce --(no)shutdown_on_low_sys_mem startup flag to toggle
+    idle low-memory shutdown, disabled by default.
+  - --incompatible_disable_cc_toolchain_label_from_crosstool_proto
+    was flipped.
+  - --incompatible_disable_cc_toolchain_label_from_crosstool_proto
+    was flipped.
+  - CppRules: All cc_toolchains depended on from
+    cc_toolchain_suite.toolchains are now analyzed when not using
+    platforms in order to select the right cc_toolchain.
+  - The function `attr.license` is deprecated and will be removed.
+      It can be disabled now with `--incompatible_no_attr_license`.
+  - `range()` function now returns a lazy value
+    (`--incompatible_range_type` is now set by default).
+  - The code coverage report now includes the actual paths to header
+    files instead of the ugly,
+    Bazel generated, virtual includes path.
+  - `--incompatible_disallow_conflicting_providers` has been switched
+    to true
+  - Add new flag `--incompatible_disable_systool_from_configration` to
+    disable loading the systool from CppConfiguration.
+  - Add new flag `--incompatible_disable_sysroot_from_configuration`
+    to
+    disable loading the systool from CppConfiguration.
+  - Sorting remote Platform properties for remote execution. May
+    affect cache keys!
+  - Use different server log files per Bazel server process; java.log
+    is
+    now a symlink to the latest log.
+
+This release contains contributions from many people at Google, as well as a7g4 <a7g4@a7g4.net>, Alan <alan.agius@betssongroup.com>, Asaf Flescher <asafflesch@gmail.com>, Benjamin Peterson <bp@benjamin.pe>, Ed Schouten <ed.schouten@prodrive-technologies.com>, George Gensure <ggensure@uber.com>, George Kalpakas <kalpakas.g@gmail.com>, Greg <gregestren@users.noreply.github.com>, Irina Iancu <iirina@users.noreply.github.com>, Keith Smiley <keithbsmiley@gmail.com>, Loo Rong Jie <loorongjie@gmail.com>, Mark Zeren <mzeren@vmware.com>, Petros Eskinder <petroseskinder@users.noreply.github.com>, rachcatch <rachelcatchpoole@hotmail.com>, Robert Brown <robert.brown@gmail.com>, Robert Gay <robert.gay@redfin.com>, Salty Egg <2281521+zhouhao@users.noreply.github.com>.
+
+## Build informations
+   - [Commit](https://github.com/bazelbuild/bazel/commit/2987897)
+Uncompressing.......
+
+Bazel is now installed!
+
+Make sure you have "/usr/local/bin" in your path. You can also activate bash
+completion by adding the following line to your :
+  source /usr/local/lib/bazel/bin/bazel-complete.bash
+
+See http://bazel.build/docs/getting-started.html to start a new project!
+Extracting Bazel installation...
+WARNING: --batch mode is deprecated. Please instead explicitly shut down your Bazel server using the command "bazel shutdown".
+INFO: Invocation ID: 80664bdc-73b0-4561-9f30-79d08b3b4c27
+                                                          [bazel release 0.20.0]
+Usage: bazel <command> <options> ...
+
+Available commands:
+  analyze-profile     Analyzes build profile data.
+  aquery              Analyzes the given targets and queries the action graph.
+  build               Builds the specified targets.
+  canonicalize-flags  Canonicalizes a list of bazel options.
+  clean               Removes output files and optionally stops the server.
+  coverage            Generates code coverage report for specified test targets.
+  cquery              Loads, analyzes, and queries the specified targets w/ configurations.
+  dump                Dumps the internal state of the bazel server process.
+  fetch               Fetches external repositories that are prerequisites to the targets.
+  help                Prints help for commands, or the index.
+  info                Displays runtime info about the bazel server.
+  license             Prints the license of this software.
+  mobile-install      Installs targets to mobile devices.
+  print_action        Prints the command line args for compiling a file.
+  query               Executes a dependency graph query.
+  run                 Runs the specified target.
+  shutdown            Stops the bazel server.
+  sync                Syncs all repositories specifed in the workspace file
+  test                Builds and runs the specified test targets.
+  version             Prints version information for bazel.
+
+Getting more help:
+  bazel help <command>
+                   Prints help and options for <command>.
+  bazel help startup_options
+                   Options for the JVM hosting bazel.
+  bazel help target-syntax
+                   Explains the syntax for specifying targets.
+  bazel help info-keys
+                   Displays a list of keys used by the info command.
+usermod: no changes
+ ---> 96b13b8fe443
+Removing intermediate container 6449e02af3e3
+Step 43/54 : COPY ./s2i/bin/ /usr/libexec/s2i
+ ---> 8b7946abd791
+Removing intermediate container 4d78a529afbe
+Step 44/54 : ADD entrypoint /entrypoint
+ ---> dfe65780ab84
+Removing intermediate container 1fb4b57e3aef
+Step 45/54 : RUN chmod +x /entrypoint
+ ---> Running in affc4699cfdd
+
+ ---> 4341ff9b643e
+Removing intermediate container affc4699cfdd
+Step 46/54 : ADD build_tools /build_tools
+ ---> 111ab3eeec20
+Removing intermediate container c54407272dab
+Step 47/54 : EXPOSE 8080
+ ---> Running in 338e924f5945
+ ---> c3129e132295
+Removing intermediate container 338e924f5945
+Step 48/54 : ENV HOME /home/$NB_USER
+ ---> Running in 8f8717d3c968
+ ---> 9c7ac4e7d73a
+Removing intermediate container 8f8717d3c968
+Step 49/54 : USER 1001
+ ---> Running in 093ccf0a8f74
+ ---> bec614efd182
+Removing intermediate container 093ccf0a8f74
+Step 50/54 : WORKDIR /workspace
+ ---> 8ab4c03d52fc
+Removing intermediate container 5b47a60f8bc9
+Step 51/54 : ENTRYPOINT /entrypoint
+ ---> Running in 96d41f8c45b1
+ ---> 0df4e4a3db16
+Removing intermediate container 96d41f8c45b1
+Step 52/54 : CMD /usr/libexec/s2i/usage
+ ---> Running in bc837a577afb
+ ---> 49d0b8579e06
+Removing intermediate container bc837a577afb
+Step 53/54 : ENV "OPENSHIFT_BUILD_NAME" "tf-hyey4-centos7-build-image-36-13-1" "OPENSHIFT_BUILD_NAMESPACE" "default" "OPENSHIFT_BUILD_SOURCE" "https://github.com/thoth-station/tensorflow-build-s2i.git" "OPENSHIFT_BUILD_REFERENCE" "master" "OPENSHIFT_BUILD_COMMIT" "2cbf1e5f55944067aa327112387df6fe55d28184"
+ ---> Running in 69eb5a000680
+ ---> e2f06b634f47
+Removing intermediate container 69eb5a000680
+Step 54/54 : LABEL "io.openshift.build.commit.author" "Subin M \u003csubin@redhat.com\u003e" "io.openshift.build.commit.date" "Tue Mar 5 12:08:51 2019 -0500" "io.openshift.build.commit.id" "2cbf1e5f55944067aa327112387df6fe55d28184" "io.openshift.build.commit.message" "fix CPP build issue" "io.openshift.build.commit.ref" "master" "io.openshift.build.name" "tf-hyey4-centos7-build-image-36-13-1" "io.openshift.build.namespace" "default" "io.openshift.build.source-location" "https://github.com/thoth-station/tensorflow-build-s2i.git"
+ ---> Running in 047bf417faec
+ ---> 97050ce2f96a
+Removing intermediate container 047bf417faec
+Successfully built 97050ce2f96a
+
+Pushing image docker-registry.default.svc:5000/default/tf-hyey4-centos7-build-image-36-13:1 ...
+Pushed 0/11 layers, 13% complete
+Pushed 1/11 layers, 9% complete
+Pushed 2/11 layers, 18% complete
+Pushed 3/11 layers, 27% complete
+Pushed 4/11 layers, 36% complete
+Pushed 5/11 layers, 46% complete
+Pushed 5/11 layers, 57% complete
+Pushed 6/11 layers, 64% complete
+Pushed 7/11 layers, 64% complete
+Push successful
